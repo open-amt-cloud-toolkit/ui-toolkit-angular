@@ -7,9 +7,8 @@ describe('KvmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [KvmComponent]
-    })
-      .compileComponents()
+      declarations: [KvmComponent],
+    }).compileComponents()
   })
 
   beforeEach(() => {
