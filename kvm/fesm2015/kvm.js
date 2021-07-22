@@ -1,37 +1,38 @@
-import { EventEmitter, ɵɵdefineComponent, ɵɵviewQuery, ɵɵqueryRefresh, ɵɵloadQuery, ɵɵelementStart, ɵɵlistener, ɵɵelementEnd, ɵɵadvance, ɵɵproperty, ɵsetClassMetadata, Component, ViewChild, Input, Output, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
+import { EventEmitter, ɵɵdirectiveInject, ɵɵdefineComponent, ɵɵviewQuery, ɵɵqueryRefresh, ɵɵloadQuery, ɵɵelementStart, ɵɵlistener, ɵɵelementEnd, ɵɵadvance, ɵɵproperty, ɵsetClassMetadata, Component, Inject, ViewChild, Input, Output, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ConsoleLogger, AMTKvmDataRedirector, Protocol, AMTDesktop, DataProcessor, MouseHelper, KeyBoardHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core';
 import { fromEvent, timer } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
 const _c0 = ["canvas"];
+const _c1 = ["device"];
 class KvmComponent {
-    constructor() {
+    constructor(params, activatedRoute) {
+        this.params = params;
+        this.activatedRoute = activatedRoute;
         // //setting a width and height for the canvas
         this.width = 400;
         this.height = 400;
-        this.mpsServer = '';
-        this.authToken = '';
-        this.deviceId = '';
-        this.deviceState = 0;
         this.deviceStatus = new EventEmitter();
         this.deviceConnection = new EventEmitter();
         this.selectedEncoding = new EventEmitter();
         this.powerState = 0;
+        this.deviceId = '';
         this.selected = 1;
         this.server = '';
         this.mouseMove = null;
         this.encodings = [
             { value: 1, viewValue: 'RLE 8' },
-            { value: 2, viewValue: 'RLE 16' },
+            { value: 2, viewValue: 'RLE 16' }
         ];
         this.urlConstructor = () => {
-            return this.mpsServer.replace('http', 'ws');
+            return this.params.mpsServer.replace('http', 'ws');
         };
         this.onConnectionStateChange = (redirector, state) => {
-            this.deviceState = state;
             this.deviceStatus.emit(state);
         };
         this.reset = () => {
@@ -47,13 +48,18 @@ class KvmComponent {
             this.keyboardHelper.UnGrabKeyInput();
             this.reset();
         };
+        this.token = localStorage.getItem('loggedInUser');
         this.server = `${this.urlConstructor()}/relay`;
-        if (this.mpsServer.includes('/mps')) {
+        this.mpsServer = this.params.mpsServer.includes('/mps');
+        if (this.mpsServer) {
             // handles kong route
             this.server = `${this.urlConstructor()}/ws/relay`;
         }
     }
     ngOnInit() {
+        this.activatedRoute.params.subscribe(params => {
+            this.deviceId = params.id;
+        });
         this.logger = new ConsoleLogger(1);
         this.deviceConnection.subscribe((data) => {
             if (data) {
@@ -74,7 +80,7 @@ class KvmComponent {
     instantiate() {
         var _a, _b;
         this.context = (_a = this.canvas) === null || _a === void 0 ? void 0 : _a.nativeElement.getContext('2d');
-        this.redirector = new AMTKvmDataRedirector(this.logger, Protocol.KVM, new FileReader(), this.deviceId, 16994, '', '', 0, 0, this.authToken, this.server);
+        this.redirector = new AMTKvmDataRedirector(this.logger, Protocol.KVM, new FileReader(), this.deviceId, 16994, '', '', 0, 0, JSON.parse(this.token).token, this.server);
         this.module = new AMTDesktop(this.logger, this.context);
         this.dataProcessor = new DataProcessor(this.logger, this.redirector, this.module);
         this.mouseHelper = new MouseHelper(this.module, this.redirector, 200);
@@ -116,9 +122,6 @@ class KvmComponent {
             this.autoConnect();
         });
     }
-    checkPowerStatus() {
-        return this.powerState.powerstate === 2;
-    }
     onMouseup(event) {
         if (this.mouseHelper != null) {
             this.mouseHelper.mouseup(event);
@@ -138,13 +141,15 @@ class KvmComponent {
         this.stopKvm();
     }
 }
-KvmComponent.ɵfac = function KvmComponent_Factory(t) { return new (t || KvmComponent)(); };
+KvmComponent.ɵfac = function KvmComponent_Factory(t) { return new (t || KvmComponent)(ɵɵdirectiveInject('userInput'), ɵɵdirectiveInject(ActivatedRoute)); };
 KvmComponent.ɵcmp = ɵɵdefineComponent({ type: KvmComponent, selectors: [["amt-kvm"]], viewQuery: function KvmComponent_Query(rf, ctx) { if (rf & 1) {
         ɵɵviewQuery(_c0, 1);
+        ɵɵviewQuery(_c1, 1);
     } if (rf & 2) {
         let _t;
         ɵɵqueryRefresh(_t = ɵɵloadQuery()) && (ctx.canvas = _t.first);
-    } }, inputs: { width: "width", height: "height", mpsServer: "mpsServer", authToken: "authToken", deviceId: "deviceId", deviceConnection: "deviceConnection", selectedEncoding: "selectedEncoding" }, outputs: { deviceState: "deviceState", deviceStatus: "deviceStatus" }, decls: 3, vars: 2, consts: [["oncontextmenu", "return false", 1, "canvas", 3, "width", "height", "mouseup", "mousedown", "mousemove"], ["canvas", ""]], template: function KvmComponent_Template(rf, ctx) { if (rf & 1) {
+        ɵɵqueryRefresh(_t = ɵɵloadQuery()) && (ctx.device = _t.first);
+    } }, inputs: { width: "width", height: "height", deviceConnection: "deviceConnection", selectedEncoding: "selectedEncoding" }, outputs: { deviceStatus: "deviceStatus" }, decls: 3, vars: 2, consts: [["oncontextmenu", "return false", 1, "canvas", 3, "width", "height", "mouseup", "mousedown", "mousemove"], ["canvas", ""]], template: function KvmComponent_Template(rf, ctx) { if (rf & 1) {
         ɵɵelementStart(0, "div");
         ɵɵelementStart(1, "canvas", 0, 1);
         ɵɵlistener("mouseup", function KvmComponent_Template_canvas_mouseup_1_listener($event) { return ctx.onMouseup($event); })("mousedown", function KvmComponent_Template_canvas_mousedown_1_listener($event) { return ctx.onMousedown($event); })("mousemove", function KvmComponent_Template_canvas_mousemove_1_listener($event) { return ctx.onMousemove($event); });
@@ -159,23 +164,21 @@ KvmComponent.ɵcmp = ɵɵdefineComponent({ type: KvmComponent, selectors: [["amt
         args: [{
                 selector: 'amt-kvm',
                 templateUrl: './kvm.component.html',
-                styleUrls: ['./kvm.component.css'],
+                styleUrls: ['./kvm.component.css']
             }]
-    }], function () { return []; }, { canvas: [{
+    }], function () { return [{ type: undefined, decorators: [{
+                type: Inject,
+                args: ['userInput']
+            }] }, { type: ActivatedRoute }]; }, { canvas: [{
             type: ViewChild,
             args: ['canvas', { static: false }]
+        }], device: [{
+            type: ViewChild,
+            args: ['device', { static: false }]
         }], width: [{
             type: Input
         }], height: [{
             type: Input
-        }], mpsServer: [{
-            type: Input
-        }], authToken: [{
-            type: Input
-        }], deviceId: [{
-            type: Input
-        }], deviceState: [{
-            type: Output
         }], deviceStatus: [{
             type: Output
         }], deviceConnection: [{
@@ -185,17 +188,42 @@ KvmComponent.ɵcmp = ɵɵdefineComponent({ type: KvmComponent, selectors: [["amt
         }] }); })();
 
 class KvmModule {
+    static forRoot(param) {
+        return {
+            ngModule: KvmModule,
+            providers: [
+                {
+                    provide: 'userInput',
+                    useValue: param
+                }
+            ]
+        };
+    }
 }
 KvmModule.ɵfac = function KvmModule_Factory(t) { return new (t || KvmModule)(); };
 KvmModule.ɵmod = ɵɵdefineNgModule({ type: KvmModule });
-KvmModule.ɵinj = ɵɵdefineInjector({ imports: [[HttpClientModule, BrowserModule, BrowserAnimationsModule]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(KvmModule, { declarations: [KvmComponent], imports: [HttpClientModule, BrowserModule, BrowserAnimationsModule], exports: [KvmComponent] }); })();
+KvmModule.ɵinj = ɵɵdefineInjector({ imports: [[
+            HttpClientModule,
+            FlexLayoutModule,
+            BrowserModule,
+            BrowserAnimationsModule
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(KvmModule, { declarations: [KvmComponent], imports: [HttpClientModule,
+        FlexLayoutModule,
+        BrowserModule,
+        BrowserAnimationsModule], exports: [KvmComponent] }); })();
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(KvmModule, [{
         type: NgModule,
         args: [{
                 declarations: [KvmComponent],
-                imports: [HttpClientModule, BrowserModule, BrowserAnimationsModule],
+                imports: [
+                    HttpClientModule,
+                    FlexLayoutModule,
+                    BrowserModule,
+                    BrowserAnimationsModule
+                ],
                 exports: [KvmComponent],
+                schemas: [CUSTOM_ELEMENTS_SCHEMA]
             }]
     }], null, null); })();
 
