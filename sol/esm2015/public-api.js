@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of sol
+ */
+export * from './lib/sol.component';
+export * from './lib/sol.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3NvbC9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMscUJBQXFCLENBQUE7QUFDbkMsY0FBYyxrQkFBa0IsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2Ygc29sXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9saWIvc29sLmNvbXBvbmVudCdcbmV4cG9ydCAqIGZyb20gJy4vbGliL3NvbC5tb2R1bGUnXG4iXX0=
