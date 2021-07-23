@@ -37,8 +37,11 @@ jobs:
       - name: Run Test
         run: npm run test-ci
         
-      - name: Run Build
-        run: npm run build
+      - name: Run Build Kvm
+        run: npm run build:kvm
+      
+      - name: Run Build Sol
+        run: npm run build:sol  
       
       #checkout the dist branch    
       - uses: actions/checkout@v2
