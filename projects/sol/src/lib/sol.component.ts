@@ -11,20 +11,20 @@ import { C, V, SPACE } from '@angular/cdk/keycodes'
   encapsulation: ViewEncapsulation.None
 })
 export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
-  uuid: string = ''
+  uuid = ''
   terminal: any
   container!: any
   term: any
   redirector: any
   dataProcessor: any
   token: any
-  server: string = ''
+  server = ''
   mpsServer: boolean
   logger: ConsoleLogger = new ConsoleLogger(LogLevel.ERROR)
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
 
-  constructor (@Inject('userInput') public params, private readonly activatedRoute: ActivatedRoute) {
+  constructor(@Inject('userInput') public params, private readonly activatedRoute: ActivatedRoute) {
     this.token = localStorage.getItem('loggedInUser')
     this.server = `${this.urlConstructor()}/relay`
     this.mpsServer = this.params.mpsServer.includes('/mps')
@@ -33,11 +33,11 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  urlConstructor (): string {
+  urlConstructor(): string {
     return this.params.mpsServer.replace('http', 'ws')
   }
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.uuid = params.id
     })
@@ -50,21 +50,32 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  ngAfterViewInit (): void {
+  ngAfterViewInit(): void {
     this.init()
   }
 
-  init (): void {
+  init(): void {
     this.instantiate()
     setTimeout(() => {
       this.startSol()
     }, 4000)
   }
 
-  instantiate (): void {
+  instantiate(): void {
     this.terminal = new AmtTerminal()
     this.dataProcessor = new TerminalDataProcessor(this.terminal)
-    this.redirector = new AMTRedirector(this.logger, Protocol.SOL, new FileReader(), this.uuid, 16994, '', '', 0, 0, JSON.parse(this.token).token, this.server)
+    this.redirector = new AMTRedirector(
+      this.logger,
+      Protocol.SOL,
+      new FileReader(),
+      this.uuid, 16994,
+      '',
+      '',
+      0,
+      0,
+      JSON.parse(this.token).token,
+      this.server
+      )
     this.terminal.onSend = this.redirector.send.bind(this.redirector)
     this.redirector.onNewState = this.terminal.StateChange.bind(this.terminal)
     this.redirector.onStateChanged = this.onTerminalStateChange.bind(this)
@@ -97,29 +108,29 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  handleKeyPress (domEvent: any): void {
+  handleKeyPress(domEvent: any): void {
     this.terminal.TermSendKeys(domEvent)
   }
 
-  handleClearTerminal (): void {
+  handleClearTerminal(): void {
     this.term.reset()
   }
 
-  handleWriteToXterm (str: string): void {
+  handleWriteToXterm(str: string): void {
     this.term.write(str)
   }
 
-  onTerminalStateChange (redirector: AMTRedirector, state: number): void {
+  onTerminalStateChange(redirector: AMTRedirector, state: number): void {
     this.deviceStatus.emit(state)
   }
 
-  startSol (): void {
+  startSol(): void {
     if (this.redirector !== null) {
       this.redirector.start(WebSocket)
     }
   }
 
-  stopSol (): void {
+  stopSol(): void {
     if (this.redirector !== null) {
       this.redirector.stop()
       this.handleClearTerminal()
@@ -128,14 +139,14 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  cleanup (): void {
+  cleanup(): void {
     this.terminal = null
     this.redirector = null
     this.dataProcessor = null
     this.term = null
   }
 
-  ngOnDestroy (): void {
+  ngOnDestroy(): void {
     this.stopSol()
   }
 }

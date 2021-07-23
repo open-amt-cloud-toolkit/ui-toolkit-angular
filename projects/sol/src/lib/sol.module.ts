@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http'
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SolModule {
-  public static forRoot (param: any): ModuleWithProviders<SolModule> {
+  public static forRoot(param: any): ModuleWithProviders<SolModule> {
     return {
       ngModule: SolModule,
       providers: [

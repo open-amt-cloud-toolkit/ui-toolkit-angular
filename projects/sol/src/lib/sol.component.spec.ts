@@ -21,5 +21,5 @@ describe('SolComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
-  });
-});
+  })
+})
