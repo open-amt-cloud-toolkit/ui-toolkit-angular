@@ -43,5 +43,5 @@ The Angular app can be created in any preferred development directory. The MPS c
     ```
     You can now view my-app in the browser.
     Local: http://localhost:4200
-    On Your Network: http://172.16.17.4:3000
+    On Your Network: http://172.16.17.4:4200
     ```
