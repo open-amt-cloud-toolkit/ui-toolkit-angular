@@ -8,7 +8,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core'
 import {
   AMTDesktop,
@@ -19,35 +19,30 @@ import {
   ILogger,
   KeyBoardHelper,
   MouseHelper,
-  Protocol,
+  Protocol
 } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 import { fromEvent, timer } from 'rxjs'
 import { throttleTime } from 'rxjs/operators'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'amt-kvm',
   templateUrl: './kvm.component.html',
-  styleUrls: ['./kvm.component.css'],
+  styleUrls: ['./kvm.component.css']
 })
 export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas', { static: false }) canvas: ElementRef | undefined
+  @ViewChild('device', { static: false }) device: string
   public context!: CanvasRenderingContext2D
 
   // //setting a width and height for the canvas
 
   @Input() public width = 400
   @Input() public height = 400
-  @Input() public mpsServer = ''
-  @Input() public authToken = ''
-  @Input() public deviceId = ''
-
-  @Output() deviceState = 0
-
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
-
-  @Input() private readonly deviceConnection: EventEmitter<boolean> =
-    new EventEmitter<boolean>()
+  @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
   @Input() selectedEncoding: EventEmitter<number> = new EventEmitter<number>()
+  token: any
   module: any
   redirector: any
   dataProcessor!: IDataProcessor | null
@@ -55,28 +50,35 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   keyboardHelper!: KeyBoardHelper
   logger!: ILogger
   powerState: any = 0
+  deviceId = ''
   selected = 1
   timeInterval!: any
   server = ''
   mouseMove: any = null
+  mpsServer: boolean
   encodings = [
     { value: 1, viewValue: 'RLE 8' },
-    { value: 2, viewValue: 'RLE 16' },
+    { value: 2, viewValue: 'RLE 16' }
   ]
 
-  constructor() {
+  constructor(@Inject('userInput') public params, public activatedRoute: ActivatedRoute) {
+    this.token = localStorage.getItem('loggedInUser')
     this.server = `${this.urlConstructor()}/relay`
-    if (this.mpsServer.includes('/mps')) {
+    this.mpsServer = this.params.mpsServer.includes('/mps')
+    if (this.mpsServer) {
       // handles kong route
       this.server = `${this.urlConstructor()}/ws/relay`
     }
   }
 
   urlConstructor = (): string => {
-    return this.mpsServer.replace('http', 'ws')
+    return this.params.mpsServer.replace('http', 'ws')
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.deviceId = params.id
+    })
     this.logger = new ConsoleLogger(1)
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
@@ -107,7 +109,7 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
       '',
       0,
       0,
-      this.authToken,
+      JSON.parse(this.token).token,
       this.server
     )
     this.module = new AMTDesktop(this.logger as any, this.context)
@@ -118,7 +120,6 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     )
     this.mouseHelper = new MouseHelper(this.module, this.redirector, 200)
     this.keyboardHelper = new KeyBoardHelper(this.module, this.redirector)
-
     this.redirector.onProcessData = this.module.processData.bind(this.module)
     this.redirector.onStart = this.module.start.bind(this.module)
     this.redirector.onNewState = this.module.onStateChange.bind(this.module)
@@ -139,7 +140,6 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onConnectionStateChange = (redirector: any, state: number): any => {
-    this.deviceState = state
     this.deviceStatus.emit(state)
   }
 
@@ -166,10 +166,6 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     timer(1000).subscribe(() => {
       this.autoConnect()
     })
-  }
-
-  checkPowerStatus(): boolean {
-    return this.powerState.powerstate === 2
   }
 
   reset = (): void => {

@@ -1,25 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { KvmComponent } from './kvm.component'
+import { SolComponent } from './sol.component'
 
-describe('KvmComponent', () => {
-  let component: KvmComponent
-  let fixture: ComponentFixture<KvmComponent>
+describe('SolComponent', () => {
+  let component: SolComponent
+  let fixture: ComponentFixture<SolComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KvmComponent ]
+      declarations: [ SolComponent ]
     })
     .compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KvmComponent)
+    fixture = TestBed.createComponent(SolComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
 
   it('should create', () => {
     expect(component).toBeTruthy()
-  })
-})
+  });
+});
