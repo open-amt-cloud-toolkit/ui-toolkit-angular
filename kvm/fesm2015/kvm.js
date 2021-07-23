@@ -5,7 +5,6 @@ import { throttleTime } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
 const _c0 = ["canvas"];
@@ -48,7 +47,8 @@ class KvmComponent {
             this.keyboardHelper.UnGrabKeyInput();
             this.reset();
         };
-        this.token = localStorage.getItem('loggedInUser');
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}';
         this.server = `${this.urlConstructor()}/relay`;
         this.mpsServer = this.params.mpsServer.includes('/mps');
         if (this.mpsServer) {
@@ -204,12 +204,10 @@ KvmModule.ɵfac = function KvmModule_Factory(t) { return new (t || KvmModule)();
 KvmModule.ɵmod = ɵɵdefineNgModule({ type: KvmModule });
 KvmModule.ɵinj = ɵɵdefineInjector({ imports: [[
             HttpClientModule,
-            FlexLayoutModule,
             BrowserModule,
             BrowserAnimationsModule
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(KvmModule, { declarations: [KvmComponent], imports: [HttpClientModule,
-        FlexLayoutModule,
         BrowserModule,
         BrowserAnimationsModule], exports: [KvmComponent] }); })();
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(KvmModule, [{
@@ -218,7 +216,6 @@ KvmModule.ɵinj = ɵɵdefineInjector({ imports: [[
                 declarations: [KvmComponent],
                 imports: [
                     HttpClientModule,
-                    FlexLayoutModule,
                     BrowserModule,
                     BrowserAnimationsModule
                 ],

@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@open-amt-cloud-toolkit/ui-toolkit/core'), require('rxjs'), require('rxjs/operators'), require('@angular/router'), require('@angular/platform-browser'), require('@angular/platform-browser/animations'), require('@angular/flex-layout'), require('@angular/common/http')) :
-    typeof define === 'function' && define.amd ? define('kvm', ['exports', '@angular/core', '@open-amt-cloud-toolkit/ui-toolkit/core', 'rxjs', 'rxjs/operators', '@angular/router', '@angular/platform-browser', '@angular/platform-browser/animations', '@angular/flex-layout', '@angular/common/http'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.kvm = {}, global.ng.core, global['@open-amt-cloud-toolkit']['ui-toolkit'].core, global.rxjs, global.rxjs.operators, global.ng.router, global.ng.platformBrowser, global.ng.platformBrowser.animations, global.ng.flexLayout, global.ng.common.http));
-}(this, (function (exports, i0, core, rxjs, operators, i1, platformBrowser, animations, flexLayout, http) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@open-amt-cloud-toolkit/ui-toolkit/core'), require('rxjs'), require('rxjs/operators'), require('@angular/router'), require('@angular/platform-browser'), require('@angular/platform-browser/animations'), require('@angular/common/http')) :
+    typeof define === 'function' && define.amd ? define('kvm', ['exports', '@angular/core', '@open-amt-cloud-toolkit/ui-toolkit/core', 'rxjs', 'rxjs/operators', '@angular/router', '@angular/platform-browser', '@angular/platform-browser/animations', '@angular/common/http'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.kvm = {}, global.ng.core, global['@open-amt-cloud-toolkit']['ui-toolkit'].core, global.rxjs, global.rxjs.operators, global.ng.router, global.ng.platformBrowser, global.ng.platformBrowser.animations, global.ng.common.http));
+}(this, (function (exports, i0, core, rxjs, operators, i1, platformBrowser, animations, http) { 'use strict';
 
     var _c0 = ["canvas"];
     var _c1 = ["device"];
@@ -45,7 +45,8 @@
                 _this.keyboardHelper.UnGrabKeyInput();
                 _this.reset();
             };
-            this.token = localStorage.getItem('loggedInUser');
+            var loggedInUser = localStorage.getItem('loggedInUser');
+            this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}';
             this.server = this.urlConstructor() + "/relay";
             this.mpsServer = this.params.mpsServer.includes('/mps');
             if (this.mpsServer) {
@@ -219,13 +220,11 @@
     KvmModule.ɵmod = i0.ɵɵdefineNgModule({ type: KvmModule });
     KvmModule.ɵinj = i0.ɵɵdefineInjector({ imports: [[
                 http.HttpClientModule,
-                flexLayout.FlexLayoutModule,
                 platformBrowser.BrowserModule,
                 animations.BrowserAnimationsModule
             ]] });
     (function () {
         (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(KvmModule, { declarations: [KvmComponent], imports: [http.HttpClientModule,
-                flexLayout.FlexLayoutModule,
                 platformBrowser.BrowserModule,
                 animations.BrowserAnimationsModule], exports: [KvmComponent] });
     })();
@@ -236,7 +235,6 @@
                         declarations: [KvmComponent],
                         imports: [
                             http.HttpClientModule,
-                            flexLayout.FlexLayoutModule,
                             platformBrowser.BrowserModule,
                             animations.BrowserAnimationsModule
                         ],
