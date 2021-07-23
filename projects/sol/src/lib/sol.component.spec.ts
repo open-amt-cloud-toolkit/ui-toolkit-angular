@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
 
 import { SolComponent } from './sol.component'
 
@@ -8,7 +9,15 @@ describe('SolComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SolComponent ]
+      declarations: [ SolComponent ],
+      imports: [ RouterTestingModule],
+      providers: [{
+        provide: 'userInput',
+          useValue: {
+            mpsServer: 'https://localhost/mps'
+          }
+      }]
+
     })
     .compileComponents()
   })

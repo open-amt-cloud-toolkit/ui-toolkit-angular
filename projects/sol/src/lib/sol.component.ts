@@ -17,7 +17,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   term: any
   redirector: any
   dataProcessor: any
-  token: any
+  token: any = localStorage.getItem('loggedInUser')
   server = ''
   mpsServer: boolean
   logger: ConsoleLogger = new ConsoleLogger(LogLevel.ERROR)
@@ -25,7 +25,8 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   constructor(@Inject('userInput') public params, private readonly activatedRoute: ActivatedRoute) {
-    this.token = localStorage.getItem('loggedInUser')
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}' 
     this.server = `${this.urlConstructor()}/relay`
     this.mpsServer = this.params.mpsServer.includes('/mps')
     if (this.mpsServer) {

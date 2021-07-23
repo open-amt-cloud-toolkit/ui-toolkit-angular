@@ -62,7 +62,8 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   ]
 
   constructor(@Inject('userInput') public params, public activatedRoute: ActivatedRoute) {
-    this.token = localStorage.getItem('loggedInUser')
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}'
     this.server = `${this.urlConstructor()}/relay`
     this.mpsServer = this.params.mpsServer.includes('/mps')
     if (this.mpsServer) {

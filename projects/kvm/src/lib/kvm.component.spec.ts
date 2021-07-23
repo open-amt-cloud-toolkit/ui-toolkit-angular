@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { KvmComponent } from './kvm.component'
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('KvmComponent', () => {
   let component: KvmComponent
@@ -8,7 +9,14 @@ describe('KvmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KvmComponent ]
+      declarations: [ KvmComponent ],
+      imports: [ RouterTestingModule ],
+      providers: [{
+        provide: 'userInput',
+          useValue: {
+            mpsServer: 'https://localhost/mps'
+          }
+      }]
     })
     .compileComponents()
   })
