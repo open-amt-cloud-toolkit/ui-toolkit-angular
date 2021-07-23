@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { KvmComponent } from './kvm.component'
-import { RouterTestingModule } from '@angular/router/testing';
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('KvmComponent', () => {
   let component: KvmComponent

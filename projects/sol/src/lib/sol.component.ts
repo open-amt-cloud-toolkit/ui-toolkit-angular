@@ -26,7 +26,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(@Inject('userInput') public params, private readonly activatedRoute: ActivatedRoute) {
     const loggedInUser = localStorage.getItem('loggedInUser')
-    this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}' 
+    this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}'
     this.server = `${this.urlConstructor()}/relay`
     this.mpsServer = this.params.mpsServer.includes('/mps')
     if (this.mpsServer) {
