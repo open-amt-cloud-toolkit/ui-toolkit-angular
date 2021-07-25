@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core'
 import { SolComponent } from './sol.component'
 import { BrowserModule } from '@angular/platform-browser'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
@@ -10,8 +9,7 @@ import { HttpClientModule } from '@angular/common/http'
   ],
   imports: [
     HttpClientModule,
-    BrowserModule,
-    BrowserAnimationsModule
+    BrowserModule
   ],
   exports: [
     SolComponent

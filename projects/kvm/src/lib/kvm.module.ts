@@ -4,7 +4,6 @@ import {
   ModuleWithProviders
 } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { KvmComponent } from './kvm.component'
 import { HttpClientModule } from '@angular/common/http'
 @NgModule({
@@ -12,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     HttpClientModule,
     BrowserModule,
-    BrowserAnimationsModule
   ],
   exports: [KvmComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
