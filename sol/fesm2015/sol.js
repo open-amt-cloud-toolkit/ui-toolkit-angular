@@ -4,7 +4,6 @@ import { ConsoleLogger, LogLevel, AmtTerminal, TerminalDataProcessor, AMTRedirec
 import { C, V, SPACE } from '@angular/cdk/keycodes';
 import { ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 class SolComponent {
@@ -162,12 +161,10 @@ SolModule.ɵfac = function SolModule_Factory(t) { return new (t || SolModule)();
 SolModule.ɵmod = ɵɵdefineNgModule({ type: SolModule });
 SolModule.ɵinj = ɵɵdefineInjector({ imports: [[
             HttpClientModule,
-            BrowserModule,
-            BrowserAnimationsModule
+            BrowserModule
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(SolModule, { declarations: [SolComponent], imports: [HttpClientModule,
-        BrowserModule,
-        BrowserAnimationsModule], exports: [SolComponent] }); })();
+        BrowserModule], exports: [SolComponent] }); })();
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(SolModule, [{
         type: NgModule,
         args: [{
@@ -176,8 +173,7 @@ SolModule.ɵinj = ɵɵdefineInjector({ imports: [[
                 ],
                 imports: [
                     HttpClientModule,
-                    BrowserModule,
-                    BrowserAnimationsModule
+                    BrowserModule
                 ],
                 exports: [
                     SolComponent

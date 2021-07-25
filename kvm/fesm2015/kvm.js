@@ -4,7 +4,6 @@ import { fromEvent, timer } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 const _c0 = ["canvas"];
@@ -205,11 +204,9 @@ KvmModule.ɵmod = ɵɵdefineNgModule({ type: KvmModule });
 KvmModule.ɵinj = ɵɵdefineInjector({ imports: [[
             HttpClientModule,
             BrowserModule,
-            BrowserAnimationsModule
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(KvmModule, { declarations: [KvmComponent], imports: [HttpClientModule,
-        BrowserModule,
-        BrowserAnimationsModule], exports: [KvmComponent] }); })();
+        BrowserModule], exports: [KvmComponent] }); })();
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(KvmModule, [{
         type: NgModule,
         args: [{
@@ -217,7 +214,6 @@ KvmModule.ɵinj = ɵɵdefineInjector({ imports: [[
                 imports: [
                     HttpClientModule,
                     BrowserModule,
-                    BrowserAnimationsModule
                 ],
                 exports: [KvmComponent],
                 schemas: [CUSTOM_ELEMENTS_SCHEMA]

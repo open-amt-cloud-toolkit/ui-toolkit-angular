@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('xterm'), require('@open-amt-cloud-toolkit/ui-toolkit/core'), require('@angular/cdk/keycodes'), require('@angular/router'), require('@angular/platform-browser'), require('@angular/platform-browser/animations'), require('@angular/common/http')) :
-    typeof define === 'function' && define.amd ? define('sol', ['exports', '@angular/core', 'xterm', '@open-amt-cloud-toolkit/ui-toolkit/core', '@angular/cdk/keycodes', '@angular/router', '@angular/platform-browser', '@angular/platform-browser/animations', '@angular/common/http'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.sol = {}, global.ng.core, global.xterm, global['@open-amt-cloud-toolkit']['ui-toolkit'].core, global.ng.cdk.keycodes, global.ng.router, global.ng.platformBrowser, global.ng.platformBrowser.animations, global.ng.common.http));
-}(this, (function (exports, i0, xterm, core, keycodes, i1, platformBrowser, animations, http) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('xterm'), require('@open-amt-cloud-toolkit/ui-toolkit/core'), require('@angular/cdk/keycodes'), require('@angular/router'), require('@angular/platform-browser'), require('@angular/common/http')) :
+    typeof define === 'function' && define.amd ? define('sol', ['exports', '@angular/core', 'xterm', '@open-amt-cloud-toolkit/ui-toolkit/core', '@angular/cdk/keycodes', '@angular/router', '@angular/platform-browser', '@angular/common/http'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.sol = {}, global.ng.core, global.xterm, global['@open-amt-cloud-toolkit']['ui-toolkit'].core, global.ng.cdk.keycodes, global.ng.router, global.ng.platformBrowser, global.ng.common.http));
+}(this, (function (exports, i0, xterm, core, keycodes, i1, platformBrowser, http) { 'use strict';
 
     var SolComponent = /** @class */ (function () {
         function SolComponent(params, activatedRoute) {
@@ -172,13 +172,11 @@
     SolModule.ɵmod = i0.ɵɵdefineNgModule({ type: SolModule });
     SolModule.ɵinj = i0.ɵɵdefineInjector({ imports: [[
                 http.HttpClientModule,
-                platformBrowser.BrowserModule,
-                animations.BrowserAnimationsModule
+                platformBrowser.BrowserModule
             ]] });
     (function () {
         (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(SolModule, { declarations: [SolComponent], imports: [http.HttpClientModule,
-                platformBrowser.BrowserModule,
-                animations.BrowserAnimationsModule], exports: [SolComponent] });
+                platformBrowser.BrowserModule], exports: [SolComponent] });
     })();
     (function () {
         (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(SolModule, [{
@@ -189,8 +187,7 @@
                         ],
                         imports: [
                             http.HttpClientModule,
-                            platformBrowser.BrowserModule,
-                            animations.BrowserAnimationsModule
+                            platformBrowser.BrowserModule
                         ],
                         exports: [
                             SolComponent
