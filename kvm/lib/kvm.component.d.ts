@@ -1,19 +1,18 @@
 import { AfterViewInit, ElementRef, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { IDataProcessor, ILogger, KeyBoardHelper, MouseHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core';
-import { ActivatedRoute } from '@angular/router';
 import * as i0 from "@angular/core";
 export declare class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
-    params: any;
-    activatedRoute: ActivatedRoute;
     canvas: ElementRef | undefined;
     device: string;
     context: CanvasRenderingContext2D;
     width: number;
     height: number;
+    mpsServer: string;
+    authToken: string;
+    deviceId: string;
     deviceStatus: EventEmitter<number>;
     deviceConnection: EventEmitter<boolean>;
     selectedEncoding: EventEmitter<number>;
-    token: any;
     module: any;
     redirector: any;
     dataProcessor: IDataProcessor | null;
@@ -21,18 +20,14 @@ export declare class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     keyboardHelper: KeyBoardHelper;
     logger: ILogger;
     powerState: any;
-    deviceId: string;
     selected: number;
     timeInterval: any;
-    server: string;
     mouseMove: any;
-    mpsServer: boolean;
     encodings: {
         value: number;
         viewValue: string;
     }[];
-    constructor(params: any, activatedRoute: ActivatedRoute);
-    urlConstructor: () => string;
+    constructor();
     ngOnInit(): void;
     ngAfterViewInit(): void;
     instantiate(): void;
@@ -48,6 +43,6 @@ export declare class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     onMousemove(event: MouseEvent): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDef<KvmComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDefWithMeta<KvmComponent, "amt-kvm", never, { "width": "width"; "height": "height"; "deviceConnection": "deviceConnection"; "selectedEncoding": "selectedEncoding"; }, { "deviceStatus": "deviceStatus"; }, never, never>;
+    static ɵcmp: i0.ɵɵComponentDefWithMeta<KvmComponent, "amt-kvm", never, { "width": "width"; "height": "height"; "mpsServer": "mpsServer"; "authToken": "authToken"; "deviceId": "deviceId"; "deviceConnection": "deviceConnection"; "selectedEncoding": "selectedEncoding"; }, { "deviceStatus": "deviceStatus"; }, never, never>;
 }
 //# sourceMappingURL=kvm.component.d.ts.map

@@ -1,3 +1,5 @@
+![codecov.io](https://codecov.io/github/open-amt-cloud-toolkit/ui-toolkit-angular/coverage.svg?branch=main)
+
 # Kvm
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
