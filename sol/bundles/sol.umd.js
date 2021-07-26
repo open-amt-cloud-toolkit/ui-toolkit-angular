@@ -1,35 +1,20 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('xterm'), require('@open-amt-cloud-toolkit/ui-toolkit/core'), require('@angular/cdk/keycodes'), require('@angular/router'), require('@angular/platform-browser'), require('@angular/common/http')) :
-    typeof define === 'function' && define.amd ? define('sol', ['exports', '@angular/core', 'xterm', '@open-amt-cloud-toolkit/ui-toolkit/core', '@angular/cdk/keycodes', '@angular/router', '@angular/platform-browser', '@angular/common/http'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.sol = {}, global.ng.core, global.xterm, global['@open-amt-cloud-toolkit']['ui-toolkit'].core, global.ng.cdk.keycodes, global.ng.router, global.ng.platformBrowser, global.ng.common.http));
-}(this, (function (exports, i0, xterm, core, keycodes, i1, platformBrowser, http) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('xterm'), require('@open-amt-cloud-toolkit/ui-toolkit/core'), require('@angular/cdk/keycodes'), require('@angular/platform-browser'), require('@angular/common/http')) :
+    typeof define === 'function' && define.amd ? define('sol', ['exports', '@angular/core', 'xterm', '@open-amt-cloud-toolkit/ui-toolkit/core', '@angular/cdk/keycodes', '@angular/platform-browser', '@angular/common/http'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.sol = {}, global.ng.core, global.xterm, global['@open-amt-cloud-toolkit']['ui-toolkit'].core, global.ng.cdk.keycodes, global.ng.platformBrowser, global.ng.common.http));
+}(this, (function (exports, i0, xterm, core, keycodes, platformBrowser, http) { 'use strict';
 
     var SolComponent = /** @class */ (function () {
-        function SolComponent(params, activatedRoute) {
-            this.params = params;
-            this.activatedRoute = activatedRoute;
-            this.uuid = '';
-            this.token = localStorage.getItem('loggedInUser');
-            this.server = '';
+        function SolComponent() {
             this.logger = new core.ConsoleLogger(core.LogLevel.ERROR);
             this.deviceStatus = new i0.EventEmitter();
             this.deviceConnection = new i0.EventEmitter();
-            var loggedInUser = localStorage.getItem('loggedInUser');
-            this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}';
-            this.server = this.urlConstructor() + "/relay";
-            this.mpsServer = this.params.mpsServer.includes('/mps');
-            if (this.mpsServer) {
-                this.server = this.urlConstructor() + "/ws/relay";
-            }
+            this.mpsServer = '';
+            this.authToken = '';
+            this.deviceId = '';
         }
-        SolComponent.prototype.urlConstructor = function () {
-            return this.params.mpsServer.replace('http', 'ws');
-        };
         SolComponent.prototype.ngOnInit = function () {
             var _this = this;
-            this.activatedRoute.params.subscribe(function (params) {
-                _this.uuid = params.id;
-            });
             this.deviceConnection.subscribe(function (data) {
                 if (data) {
                     _this.init();
@@ -53,7 +38,7 @@
             var _this = this;
             this.terminal = new core.AmtTerminal();
             this.dataProcessor = new core.TerminalDataProcessor(this.terminal);
-            this.redirector = new core.AMTRedirector(this.logger, core.Protocol.SOL, new FileReader(), this.uuid, 16994, '', '', 0, 0, JSON.parse(this.token).token, this.server);
+            this.redirector = new core.AMTRedirector(this.logger, core.Protocol.SOL, new FileReader(), this.deviceId, 16994, '', '', 0, 0, this.authToken, this.mpsServer);
             this.terminal.onSend = this.redirector.send.bind(this.redirector);
             this.redirector.onNewState = this.terminal.StateChange.bind(this.terminal);
             this.redirector.onStateChanged = this.onTerminalStateChange.bind(this);
@@ -123,8 +108,8 @@
         };
         return SolComponent;
     }());
-    SolComponent.ɵfac = function SolComponent_Factory(t) { return new (t || SolComponent)(i0.ɵɵdirectiveInject('userInput'), i0.ɵɵdirectiveInject(i1.ActivatedRoute)); };
-    SolComponent.ɵcmp = i0.ɵɵdefineComponent({ type: SolComponent, selectors: [["amt-sol"]], inputs: { deviceConnection: "deviceConnection" }, outputs: { deviceStatus: "deviceStatus" }, decls: 2, vars: 0, consts: [[1, "container"], ["id", "terminal", 1, "xtermDisplay", 2, "width", "fit-content"]], template: function SolComponent_Template(rf, ctx) {
+    SolComponent.ɵfac = function SolComponent_Factory(t) { return new (t || SolComponent)(); };
+    SolComponent.ɵcmp = i0.ɵɵdefineComponent({ type: SolComponent, selectors: [["amt-sol"]], inputs: { deviceConnection: "deviceConnection", mpsServer: "mpsServer", authToken: "authToken", deviceId: "deviceId" }, outputs: { deviceStatus: "deviceStatus" }, decls: 2, vars: 0, consts: [[1, "container"], ["id", "terminal", 1, "xtermDisplay", 2, "width", "fit-content"]], template: function SolComponent_Template(rf, ctx) {
             if (rf & 1) {
                 i0.ɵɵelementStart(0, "div", 0);
                 i0.ɵɵelement(1, "div", 1);
@@ -140,14 +125,15 @@
                         styleUrls: ['./sol.component.css'],
                         encapsulation: i0.ViewEncapsulation.None
                     }]
-            }], function () {
-            return [{ type: undefined, decorators: [{
-                            type: i0.Inject,
-                            args: ['userInput']
-                        }] }, { type: i1.ActivatedRoute }];
-        }, { deviceStatus: [{
+            }], function () { return []; }, { deviceStatus: [{
                     type: i0.Output
                 }], deviceConnection: [{
+                    type: i0.Input
+                }], mpsServer: [{
+                    type: i0.Input
+                }], authToken: [{
+                    type: i0.Input
+                }], deviceId: [{
                     type: i0.Input
                 }] });
     })();

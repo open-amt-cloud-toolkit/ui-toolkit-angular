@@ -1,36 +1,20 @@
-import { EventEmitter, ɵɵdirectiveInject, ɵɵdefineComponent, ɵɵelementStart, ɵɵelement, ɵɵelementEnd, ɵsetClassMetadata, Component, ViewEncapsulation, Inject, Output, Input, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { EventEmitter, ɵɵdefineComponent, ɵɵelementStart, ɵɵelement, ɵɵelementEnd, ɵsetClassMetadata, Component, ViewEncapsulation, Output, Input, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Terminal } from 'xterm';
 import { ConsoleLogger, LogLevel, AmtTerminal, TerminalDataProcessor, AMTRedirector, Protocol } from '@open-amt-cloud-toolkit/ui-toolkit/core';
 import { C, V, SPACE } from '@angular/cdk/keycodes';
-import { ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 class SolComponent {
-    constructor(params, activatedRoute) {
-        this.params = params;
-        this.activatedRoute = activatedRoute;
-        this.uuid = '';
-        this.token = localStorage.getItem('loggedInUser');
-        this.server = '';
+    constructor() {
         this.logger = new ConsoleLogger(LogLevel.ERROR);
         this.deviceStatus = new EventEmitter();
         this.deviceConnection = new EventEmitter();
-        const loggedInUser = localStorage.getItem('loggedInUser');
-        this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}';
-        this.server = `${this.urlConstructor()}/relay`;
-        this.mpsServer = this.params.mpsServer.includes('/mps');
-        if (this.mpsServer) {
-            this.server = `${this.urlConstructor()}/ws/relay`;
-        }
-    }
-    urlConstructor() {
-        return this.params.mpsServer.replace('http', 'ws');
+        this.mpsServer = '';
+        this.authToken = '';
+        this.deviceId = '';
     }
     ngOnInit() {
-        this.activatedRoute.params.subscribe(params => {
-            this.uuid = params.id;
-        });
         this.deviceConnection.subscribe((data) => {
             if (data) {
                 this.init();
@@ -52,7 +36,7 @@ class SolComponent {
     instantiate() {
         this.terminal = new AmtTerminal();
         this.dataProcessor = new TerminalDataProcessor(this.terminal);
-        this.redirector = new AMTRedirector(this.logger, Protocol.SOL, new FileReader(), this.uuid, 16994, '', '', 0, 0, JSON.parse(this.token).token, this.server);
+        this.redirector = new AMTRedirector(this.logger, Protocol.SOL, new FileReader(), this.deviceId, 16994, '', '', 0, 0, this.authToken, this.mpsServer);
         this.terminal.onSend = this.redirector.send.bind(this.redirector);
         this.redirector.onNewState = this.terminal.StateChange.bind(this.terminal);
         this.redirector.onStateChanged = this.onTerminalStateChange.bind(this);
@@ -121,8 +105,8 @@ class SolComponent {
         this.stopSol();
     }
 }
-SolComponent.ɵfac = function SolComponent_Factory(t) { return new (t || SolComponent)(ɵɵdirectiveInject('userInput'), ɵɵdirectiveInject(ActivatedRoute)); };
-SolComponent.ɵcmp = ɵɵdefineComponent({ type: SolComponent, selectors: [["amt-sol"]], inputs: { deviceConnection: "deviceConnection" }, outputs: { deviceStatus: "deviceStatus" }, decls: 2, vars: 0, consts: [[1, "container"], ["id", "terminal", 1, "xtermDisplay", 2, "width", "fit-content"]], template: function SolComponent_Template(rf, ctx) { if (rf & 1) {
+SolComponent.ɵfac = function SolComponent_Factory(t) { return new (t || SolComponent)(); };
+SolComponent.ɵcmp = ɵɵdefineComponent({ type: SolComponent, selectors: [["amt-sol"]], inputs: { deviceConnection: "deviceConnection", mpsServer: "mpsServer", authToken: "authToken", deviceId: "deviceId" }, outputs: { deviceStatus: "deviceStatus" }, decls: 2, vars: 0, consts: [[1, "container"], ["id", "terminal", 1, "xtermDisplay", 2, "width", "fit-content"]], template: function SolComponent_Template(rf, ctx) { if (rf & 1) {
         ɵɵelementStart(0, "div", 0);
         ɵɵelement(1, "div", 1);
         ɵɵelementEnd();
@@ -135,12 +119,15 @@ SolComponent.ɵcmp = ɵɵdefineComponent({ type: SolComponent, selectors: [["amt
                 styleUrls: ['./sol.component.css'],
                 encapsulation: ViewEncapsulation.None
             }]
-    }], function () { return [{ type: undefined, decorators: [{
-                type: Inject,
-                args: ['userInput']
-            }] }, { type: ActivatedRoute }]; }, { deviceStatus: [{
+    }], function () { return []; }, { deviceStatus: [{
             type: Output
         }], deviceConnection: [{
+            type: Input
+        }], mpsServer: [{
+            type: Input
+        }], authToken: [{
+            type: Input
+        }], deviceId: [{
             type: Input
         }] }); })();
 
