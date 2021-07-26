@@ -39,10 +39,13 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() public width = 400
   @Input() public height = 400
+  @Input() public mpsServer = ''
+  @Input() public authToken = ''
+  @Input() public deviceId = ''
+
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
   @Input() selectedEncoding: EventEmitter<number> = new EventEmitter<number>()
-  token: any
   module: any
   redirector: any
   dataProcessor!: IDataProcessor | null
@@ -50,36 +53,21 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   keyboardHelper!: KeyBoardHelper
   logger!: ILogger
   powerState: any = 0
-  deviceId = ''
   selected = 1
   timeInterval!: any
-  server = ''
   mouseMove: any = null
-  mpsServer: boolean
   encodings = [
     { value: 1, viewValue: 'RLE 8' },
     { value: 2, viewValue: 'RLE 16' }
   ]
 
-  constructor(@Inject('userInput') public params, public activatedRoute: ActivatedRoute) {
-    const loggedInUser = localStorage.getItem('loggedInUser')
-    this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}'
-    this.server = `${this.urlConstructor()}/relay`
-    this.mpsServer = this.params.mpsServer.includes('/mps')
-    if (this.mpsServer) {
-      // handles kong route
-      this.server = `${this.urlConstructor()}/ws/relay`
-    }
+  constructor() {
+
   }
 
-  urlConstructor = (): string => {
-    return this.params.mpsServer.replace('http', 'ws')
-  }
+
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.deviceId = params.id
-    })
     this.logger = new ConsoleLogger(1)
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
@@ -110,8 +98,8 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
       '',
       0,
       0,
-      JSON.parse(this.token).token,
-      this.server
+      this.authToken,
+      this.mpsServer
     )
     this.module = new AMTDesktop(this.logger as any, this.context)
     this.dataProcessor = new DataProcessor(

@@ -9,16 +9,10 @@ describe('KvmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KvmComponent ],
-      imports: [ RouterTestingModule ],
-      providers: [{
-        provide: 'userInput',
-          useValue: {
-            mpsServer: 'https://localhost/mps'
-          }
-      }]
+      declarations: [KvmComponent],
+      imports: [RouterTestingModule]
     })
-    .compileComponents()
+      .compileComponents()
   })
 
   beforeEach(() => {
