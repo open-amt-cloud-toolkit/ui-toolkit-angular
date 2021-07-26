@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-         node-version: 14.x
+          node-version: 14.x
       - name: Run NPM CI
         run: npm install
 
@@ -36,26 +36,35 @@ jobs:
 
       - name: Run Test
         run: npm run test-ci
-        
+
+      - uses: codecov/codecov-action@v1.2.1
+        name: Upload Coverage Results (KVM)
+        with:
+          directory: ./coverage/kvm
+
+      - uses: codecov/codecov-action@v1.2.1
+        name: Upload Coverage Results (SOL)
+        with:
+          directory: ./coverage/sol
       - name: Run Build Kvm
         run: npm run build:kvm
-      
+
       - name: Run Build Sol
-        run: npm run build:sol  
-      
-      #checkout the dist branch    
+        run: npm run build:sol
+
+      #checkout the dist branch
       - uses: actions/checkout@v2
-        if: ${{ github.ref == 'refs/heads/main' }}      
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          path: 'to-be-published'
-          ref: 'dist'
+          path: "to-be-published"
+          ref: "dist"
       #copy the built dist content
-      - name: Copy 
-        if: ${{ github.ref == 'refs/heads/main' }}      
+      - name: Copy
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: cp -rlf dist/* ./to-be-published/
       #publish it
       - name: Publish content
-        if: ${{ github.ref == 'refs/heads/main' }}      
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           cd ./to-be-published
           git config user.name github-actions
@@ -63,4 +72,3 @@ jobs:
           git add .
           git commit -m 'ci: ${{github.event.head_commit.message}}'
           git push origin dist
-

@@ -35,6 +35,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "main": "projects/kvm/src/test.ts",
             "tsConfig": "projects/kvm/tsconfig.spec.json",
             "karmaConfig": "projects/kvm/karma.conf.js"
@@ -47,7 +48,9 @@
               "projects/kvm/tsconfig.lib.json",
               "projects/kvm/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -73,6 +76,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "main": "projects/sol/src/test.ts",
             "tsConfig": "projects/sol/tsconfig.spec.json",
             "karmaConfig": "projects/sol/karma.conf.js"
