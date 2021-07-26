@@ -11,37 +11,23 @@ import { C, V, SPACE } from '@angular/cdk/keycodes'
   encapsulation: ViewEncapsulation.None
 })
 export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
-  uuid = ''
   terminal: any
   container!: any
   term: any
   redirector: any
   dataProcessor: any
-  token: any = localStorage.getItem('loggedInUser')
-  server = ''
-  mpsServer: boolean
   logger: ConsoleLogger = new ConsoleLogger(LogLevel.ERROR)
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
+  @Input() public mpsServer = ''
+  @Input() public authToken = ''
+  @Input() public deviceId = ''
 
-  constructor(@Inject('userInput') public params, private readonly activatedRoute: ActivatedRoute) {
-    const loggedInUser = localStorage.getItem('loggedInUser')
-    this.token = loggedInUser ? JSON.parse(loggedInUser).token : '{}'
-    this.server = `${this.urlConstructor()}/relay`
-    this.mpsServer = this.params.mpsServer.includes('/mps')
-    if (this.mpsServer) {
-      this.server = `${this.urlConstructor()}/ws/relay`
-    }
-  }
+  constructor() {
 
-  urlConstructor(): string {
-    return this.params.mpsServer.replace('http', 'ws')
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.uuid = params.id
-    })
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
         this.init()
@@ -69,13 +55,13 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
       this.logger,
       Protocol.SOL,
       new FileReader(),
-      this.uuid, 16994,
+      this.deviceId, 16994,
       '',
       '',
       0,
       0,
-      JSON.parse(this.token).token,
-      this.server
+      this.authToken,
+      this.mpsServer
       )
     this.terminal.onSend = this.redirector.send.bind(this.redirector)
     this.redirector.onNewState = this.terminal.StateChange.bind(this.terminal)
