@@ -7,6 +7,7 @@ export declare class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     term: any;
     redirector: any;
     dataProcessor: any;
+    deviceState: number;
     logger: ConsoleLogger;
     deviceStatus: EventEmitter<number>;
     deviceConnection: EventEmitter<boolean>;

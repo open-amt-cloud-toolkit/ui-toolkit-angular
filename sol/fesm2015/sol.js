@@ -1,12 +1,66 @@
-import { EventEmitter, ɵɵdefineComponent, ɵɵelementStart, ɵɵelement, ɵɵelementEnd, ɵsetClassMetadata, Component, ViewEncapsulation, Output, Input, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { EventEmitter, ɵɵdefineComponent, ɵɵelement, ɵsetClassMetadata, Component, Input, Output, ɵɵgetCurrentView, ɵɵelementStart, ɵɵlistener, ɵɵrestoreView, ɵɵnextContext, ɵɵelementEnd, ɵɵproperty, ɵɵtemplate, ɵɵadvance, ViewEncapsulation, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Terminal } from 'xterm';
 import { ConsoleLogger, LogLevel, AmtTerminal, TerminalDataProcessor, AMTRedirector, Protocol } from '@open-amt-cloud-toolkit/ui-toolkit/core';
+import { NgIf } from '@angular/common';
 import { C, V, SPACE } from '@angular/cdk/keycodes';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+class TerminalComponent {
+    constructor() {
+        this.handleKeyPress = new EventEmitter();
+    }
+    ngOnInit() {
+        this.container = document.getElementById('terminal');
+        this.term.open(this.container);
+        this.term.onData((data) => {
+            this.handleKeyPress.emit(data);
+        });
+        this.term.attachCustomKeyEventHandler((e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === C) {
+                return navigator.clipboard.writeText(this.term.getSelection());
+            }
+            else if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === V) {
+                return navigator.clipboard.readText().then(text => {
+                    this.handleKeyPress.emit(text);
+                });
+            }
+            else if (e.code === SPACE) {
+                return this.handleKeyPress.emit(e.key);
+            }
+        });
+    }
+}
+TerminalComponent.ɵfac = function TerminalComponent_Factory(t) { return new (t || TerminalComponent)(); };
+TerminalComponent.ɵcmp = ɵɵdefineComponent({ type: TerminalComponent, selectors: [["amt-terminal"]], inputs: { term: "term" }, outputs: { handleKeyPress: "handleKeyPress" }, decls: 1, vars: 0, consts: [["id", "terminal", 1, "xtermDisplay", 2, "width", "fit-content"]], template: function TerminalComponent_Template(rf, ctx) { if (rf & 1) {
+        ɵɵelement(0, "div", 0);
+    } }, encapsulation: 2 });
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(TerminalComponent, [{
+        type: Component,
+        args: [{
+                selector: 'amt-terminal',
+                templateUrl: './terminal.component.html'
+            }]
+    }], null, { term: [{
+            type: Input
+        }], handleKeyPress: [{
+            type: Output
+        }] }); })();
+
+function SolComponent_amt_terminal_1_Template(rf, ctx) { if (rf & 1) {
+    const _r2 = ɵɵgetCurrentView();
+    ɵɵelementStart(0, "amt-terminal", 2);
+    ɵɵlistener("handleKeyPress", function SolComponent_amt_terminal_1_Template_amt_terminal_handleKeyPress_0_listener($event) { ɵɵrestoreView(_r2); const ctx_r1 = ɵɵnextContext(); return ctx_r1.handleKeyPress($event); });
+    ɵɵelementEnd();
+} if (rf & 2) {
+    const ctx_r0 = ɵɵnextContext();
+    ɵɵproperty("term", ctx_r0.term);
+} }
 class SolComponent {
     constructor() {
+        this.deviceState = 0;
         this.logger = new ConsoleLogger(LogLevel.ERROR);
         this.deviceStatus = new EventEmitter();
         this.deviceConnection = new EventEmitter();
@@ -43,31 +97,11 @@ class SolComponent {
         this.redirector.onProcessData = this.dataProcessor.processData.bind(this);
         this.dataProcessor.processDataToXterm = this.handleWriteToXterm.bind(this);
         this.dataProcessor.clearTerminal = this.handleClearTerminal.bind(this);
-        this.container = document.getElementById('terminal');
         this.term = new Terminal({
             rows: 30,
             cols: 100,
             cursorStyle: 'block',
             fontWeight: 'bold'
-        });
-        this.term.open(this.container);
-        this.term.onData((data) => {
-            this.handleKeyPress(data);
-        });
-        this.term.attachCustomKeyEventHandler((e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === C) {
-                return navigator.clipboard.writeText(this.term.getSelection());
-            }
-            else if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === V) {
-                return navigator.clipboard.readText().then(text => {
-                    this.handleKeyPress(text);
-                });
-            }
-            else if (e.code === SPACE) {
-                return this.handleKeyPress(e.key);
-            }
         });
     }
     handleKeyPress(domEvent) {
@@ -81,6 +115,7 @@ class SolComponent {
     }
     onTerminalStateChange(redirector, state) {
         this.deviceStatus.emit(state);
+        this.deviceState = state;
     }
     startSol() {
         if (this.redirector !== null) {
@@ -106,11 +141,14 @@ class SolComponent {
     }
 }
 SolComponent.ɵfac = function SolComponent_Factory(t) { return new (t || SolComponent)(); };
-SolComponent.ɵcmp = ɵɵdefineComponent({ type: SolComponent, selectors: [["amt-sol"]], inputs: { deviceConnection: "deviceConnection", mpsServer: "mpsServer", authToken: "authToken", deviceId: "deviceId" }, outputs: { deviceStatus: "deviceStatus" }, decls: 2, vars: 0, consts: [[1, "container"], ["id", "terminal", 1, "xtermDisplay", 2, "width", "fit-content"]], template: function SolComponent_Template(rf, ctx) { if (rf & 1) {
+SolComponent.ɵcmp = ɵɵdefineComponent({ type: SolComponent, selectors: [["amt-sol"]], inputs: { deviceConnection: "deviceConnection", mpsServer: "mpsServer", authToken: "authToken", deviceId: "deviceId" }, outputs: { deviceStatus: "deviceStatus" }, decls: 2, vars: 1, consts: [[1, "container"], [3, "term", "handleKeyPress", 4, "ngIf"], [3, "term", "handleKeyPress"]], template: function SolComponent_Template(rf, ctx) { if (rf & 1) {
         ɵɵelementStart(0, "div", 0);
-        ɵɵelement(1, "div", 1);
+        ɵɵtemplate(1, SolComponent_amt_terminal_1_Template, 1, 1, "amt-terminal", 1);
         ɵɵelementEnd();
-    } }, styles: [".container{display:block;text-align:center}.xtermDisplay{display:inline-block}"], encapsulation: 2 });
+    } if (rf & 2) {
+        ɵɵadvance(1);
+        ɵɵproperty("ngIf", ctx.deviceState === 3);
+    } }, directives: [NgIf, TerminalComponent], styles: [".container{display:block;text-align:center}.xtermDisplay{display:inline-block}"], encapsulation: 2 });
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(SolComponent, [{
         type: Component,
         args: [{
@@ -132,17 +170,6 @@ SolComponent.ɵcmp = ɵɵdefineComponent({ type: SolComponent, selectors: [["amt
         }] }); })();
 
 class SolModule {
-    static forRoot(param) {
-        return {
-            ngModule: SolModule,
-            providers: [
-                {
-                    provide: 'userInput',
-                    useValue: param
-                }
-            ]
-        };
-    }
 }
 SolModule.ɵfac = function SolModule_Factory(t) { return new (t || SolModule)(); };
 SolModule.ɵmod = ɵɵdefineNgModule({ type: SolModule });
@@ -150,13 +177,15 @@ SolModule.ɵinj = ɵɵdefineInjector({ imports: [[
             HttpClientModule,
             BrowserModule
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(SolModule, { declarations: [SolComponent], imports: [HttpClientModule,
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(SolModule, { declarations: [SolComponent,
+        TerminalComponent], imports: [HttpClientModule,
         BrowserModule], exports: [SolComponent] }); })();
 (function () { (typeof ngDevMode === "undefined" || ngDevMode) && ɵsetClassMetadata(SolModule, [{
         type: NgModule,
         args: [{
                 declarations: [
-                    SolComponent
+                    SolComponent,
+                    TerminalComponent
                 ],
                 imports: [
                     HttpClientModule,
