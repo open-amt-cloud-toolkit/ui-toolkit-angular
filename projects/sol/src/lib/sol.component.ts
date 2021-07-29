@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Inject, OnInit, Output, ViewEncapsulation, OnDestroy, Input, AfterViewInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, OnDestroy, Input, AfterViewInit } from '@angular/core'
 import { Terminal } from 'xterm'
 import { AmtTerminal, AMTRedirector, TerminalDataProcessor, ConsoleLogger, Protocol, LogLevel } from '@open-amt-cloud-toolkit/ui-toolkit/core'
-import { ActivatedRoute } from '@angular/router'
-import { C, V, SPACE } from '@angular/cdk/keycodes'
 
 @Component({
   selector: 'amt-sol',
@@ -16,6 +14,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   term: any
   redirector: any
   dataProcessor: any
+  deviceState = 0
   logger: ConsoleLogger = new ConsoleLogger(LogLevel.ERROR)
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
@@ -69,31 +68,14 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     this.redirector.onProcessData = this.dataProcessor.processData.bind(this)
     this.dataProcessor.processDataToXterm = this.handleWriteToXterm.bind(this)
     this.dataProcessor.clearTerminal = this.handleClearTerminal.bind(this)
-    this.container = document.getElementById('terminal')
     this.term = new Terminal({
       rows: 30,
       cols: 100,
       cursorStyle: 'block',
       fontWeight: 'bold'
     })
-    this.term.open(this.container)
-    this.term.onData((data: any) => {
-      this.handleKeyPress(data)
-    })
-    this.term.attachCustomKeyEventHandler((e: any) => {
-      e.stopPropagation()
-      e.preventDefault()
-      if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === C) {
-        return navigator.clipboard.writeText(this.term.getSelection())
-      } else if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === V) {
-        return navigator.clipboard.readText().then(text => {
-          this.handleKeyPress(text)
-        })
-      } else if (e.code === SPACE) {
-        return this.handleKeyPress(e.key)
-      }
-    })
   }
+
 
   handleKeyPress(domEvent: any): void {
     this.terminal.TermSendKeys(domEvent)
@@ -109,6 +91,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onTerminalStateChange(redirector: AMTRedirector, state: number): void {
     this.deviceStatus.emit(state)
+    this.deviceState = state
   }
 
   startSol(): void {

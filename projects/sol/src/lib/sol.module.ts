@@ -1,11 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule } from '@angular/core'
-import { SolComponent } from './sol.component'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClientModule } from '@angular/common/http'
+import { SolComponent } from './sol.component'
+import { TerminalComponent } from './terminal/terminal.component'
 
 @NgModule({
   declarations: [
-    SolComponent
+    SolComponent,
+    TerminalComponent
   ],
   imports: [
     HttpClientModule,
@@ -17,15 +19,4 @@ import { HttpClientModule } from '@angular/common/http'
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SolModule {
-  public static forRoot(param: any): ModuleWithProviders<SolModule> {
-    return {
-      ngModule: SolModule,
-      providers: [
-        {
-          provide: 'userInput',
-          useValue: param
-        }
-      ]
-    }
-  }
 }
