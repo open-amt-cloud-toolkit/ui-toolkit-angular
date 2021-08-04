@@ -31,7 +31,7 @@ pipeline{
 
                         checkmarxProjectName = "OpenAMT - UI Toolkit-angular"
 
-                        //snyk details
+                        //snyk details 
                         snykManifestFile        = ['package-lock.json']
                         snykProjectName         = ['openamt-ui-toolkit-angular']
                     }
