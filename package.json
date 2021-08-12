@@ -1,6 +1,6 @@
 {
   "name": "@open-amt-cloud-toolkit/ui-toolkit-angular",
-  "version": "2.0.0",
+  "version": "1.5.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -14,7 +14,6 @@
     "build:kvm": "ng build kvm",
     "build:sol": "ng build sol"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "~11.2.14",
     "@angular/compiler": "~11.2.14",
@@ -22,7 +21,7 @@
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
-    "@open-amt-cloud-toolkit/ui-toolkit": "git+https://github.com/open-amt-cloud-toolkit/ui-toolkit.git#dist",
+    "@open-amt-cloud-toolkit/ui-toolkit": "~1.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "xterm": "^4.13.0",
