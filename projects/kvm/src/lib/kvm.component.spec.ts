@@ -17,7 +17,13 @@ describe('KvmComponent', () => {
       .compileComponents()
   })
 
-  beforeEach(fakeAsync(() => {
+  const setup = () => {
+    fixture = TestBed.createComponent(KvmComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  }
+
+  const asyncSetup = fakeAsync(() => {
     fixture = TestBed.createComponent(KvmComponent)
     component = fixture.componentInstance
     component.mpsServer = 'wss://localhost'
@@ -25,9 +31,10 @@ describe('KvmComponent', () => {
     tick(4500)
     fixture.detectChanges()
     flush()
-  }))
+  })
 
   it('should create', () => {
+    setup()
     expect(component).toBeTruthy()
     expect(component.redirector).toBeInstanceOf(AMTRedirector)
     expect(component.module).toBeInstanceOf(AMTDesktop)
@@ -37,12 +44,23 @@ describe('KvmComponent', () => {
     expect(component.dataProcessor).toBeInstanceOf(DataProcessor)
     expect(component.selected).toEqual(1)
     expect(component.encodings.length).toEqual(2)
-    expect(component.mpsServer).toEqual('wss://localhost')
-    expect(component.authToken).toEqual('authToken')
+    expect(component.mpsServer).toEqual('')
+    expect(component.deviceId).toEqual('')
+    expect(component.authToken).toEqual('')
 
   })
 
+  it('should autoconnect on pageload', () => {
+    asyncSetup()
+    spyOn(component.redirector, 'start')
+    spyOn(component.keyboardHelper, 'GrabKeyInput')
+    expect(component.redirector).not.toBeNull()
+    expect(component.mpsServer).toEqual('wss://localhost')
+    expect(component.authToken).toEqual('authToken')
+  })
+
   it('should reset all the objects once kvm is stopped', () => {
+    setup()
     spyOn(component.redirector, 'stop')
     spyOn(component.keyboardHelper, 'UnGrabKeyInput')
     const resetSpy = spyOn(component, 'reset')
@@ -53,6 +71,7 @@ describe('KvmComponent', () => {
   })
 
   it('should disconnect the active KVM session if there is an encoding change', fakeAsync(() => {
+    setup()
     const stopKvmSpy = spyOn(component, 'stopKvm')
     const autoConnectSpy = spyOn(component, 'autoConnect')
     component.selectedEncoding.emit(1)
@@ -65,6 +84,7 @@ describe('KvmComponent', () => {
   }))
 
   it('should reset and re-instantiate the core objects on error', () => {
+    setup()
     const resetSpy = spyOn(component, 'reset')
     component.onRedirectorError()
 
@@ -72,6 +92,7 @@ describe('KvmComponent', () => {
   })
 
   it('should trigger the core components method on mouse interactions', () => {
+    setup()
     spyOn(component.mouseHelper, 'mousedown')
     spyOn(component.mouseHelper, 'mouseup')
     spyOn(component.mouseHelper, 'mousemove')
