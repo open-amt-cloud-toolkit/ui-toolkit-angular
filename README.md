@@ -1,3 +1,5 @@
+![codecov.io](https://codecov.io/github/open-amt-cloud-toolkit/ui-toolkit-angular/coverage.svg?branch=main)
+
 # Angular UI Components
 
 ## Prerequisites
