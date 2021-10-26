@@ -33,7 +33,7 @@ pipeline{
 
                         //snyk details 
                         snykManifestFile        = ['package-lock.json']
-                        snykProjectName         = ['openamt-ui-toolkit-angular']
+                        snykProjectName         = ['openamt-ui-toolkit-ng']
                     }
                 }
             }
