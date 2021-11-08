@@ -1,6 +1,7 @@
 {
   "name": "@open-amt-cloud-toolkit/ui-toolkit-angular",
-  "version": "2.0.0",
+  "version": "2.0.2",
+  "license": "Apache-2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
