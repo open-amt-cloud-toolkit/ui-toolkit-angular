@@ -2,9 +2,37 @@
 ## [Unreleased]
 
 
-<a name="2.0.0"></a>
-## [2.0.0] - 2021-09-15
+<a name="2.0.2"></a>
+## [2.0.2] - 2021-11-08
 ### Build
+- **deps:** bump xterm from 4.13.0 to 4.14.1 (#d147c3b) 
+- **deps:** bump [@open](https://github.com/open)-amt-cloud-toolkit/ui-toolkit from 1.5.0 to 2.0.2 (#5ddc4f6) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 3.9.0 to 3.9.1 (#4f2ac74) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 3.10.0 to 3.10.1 (#c12708a) 
+- **deps-dev:** bump karma from 6.3.5 to 6.3.7 (#7828f73) 
+- **deps-dev:** bump jasmine-core from 3.10.0 to 3.10.1 (#1b55a13) 
+- **deps-dev:** bump ts-node from 10.3.0 to 10.4.0 (#4fde802) 
+- **deps-dev:** bump karma from 6.3.4 to 6.3.5 (#1d7aa60) 
+- **deps-dev:** bump jasmine-core from 3.9.0 to 3.10.0 (#102b02a) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 3.9.1 to 3.10.0 (#31a320d) 
+- **deps-dev:** bump ts-node from 10.2.1 to 10.3.0 (#80510bc) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 3.10.1 to 3.10.2 (#ee83c29) 
+- **version:** bump to v2.0.2 (#9e377cf) 
+- **version:** bump to v2.0.2 (#4fe75ec) 
+
+### Ci
+- **jenkins:** conform to character limitation (#6a28628) 
+
+### Docs
+- adds issue template (#7d65461) 
+- add contributing guidelines (#f009e2c) 
+- **github:** add pull request template (#d9d9ac4) 
+
+
+<a name="v2.0.0"></a>
+## [v2.0.0] - 2021-09-15
+### Build
+- set ui-toolkit to v2.0.0 (#bc53bb8) 
 - update version to v2.0.0 (#d074e29) 
 - **deps:** bump tslib from 2.3.0 to 2.3.1 (#fefe79d) 
 - **deps-dev:** bump [@types](https://github.com/types)/jasmine from 3.8.2 to 3.9.0 (#8aee6a7) 
@@ -13,6 +41,10 @@
 - **deps-dev:** bump karma from 6.1.2 to 6.3.4 (#a8f7430) 
 - **deps-dev:** bump jasmine-spec-reporter from 5.0.2 to 7.0.0 (#39957c7) 
 - **deps-dev:** bump jasmine-core from 3.6.0 to 3.9.0 (#69227a4) 
+
+### Docs
+- **badge:** add code coverage (#1ba3139) 
+- **changelog:** update changelog (#04cccb7) 
 
 ### Fix
 - **unittests:** address review comments (#a18b032) 
@@ -58,5 +90,6 @@
 - **ui-toolkit:** break out angular components (#e208744) 
 
 
-[Unreleased]: https://github.com/open-amt-cloud-toolkit/ui-toolkit/compare/2.0.0...HEAD
-[2.0.0]: https://github.com/open-amt-cloud-toolkit/ui-toolkit/compare/v1.5.0...2.0.0
+[Unreleased]: https://github.com/open-amt-cloud-toolkit/ui-toolkit/compare/2.0.2...HEAD
+[2.0.2]: https://github.com/open-amt-cloud-toolkit/ui-toolkit/compare/v2.0.0...2.0.2
+[v2.0.0]: https://github.com/open-amt-cloud-toolkit/ui-toolkit/compare/v1.5.0...v2.0.0
