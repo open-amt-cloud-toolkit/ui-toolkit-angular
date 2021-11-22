@@ -25,7 +25,7 @@
     "@open-amt-cloud-toolkit/ui-toolkit": "~2.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
-    "xterm": "^4.14.1",
+    "xterm": "^4.15.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.10.1",
     "jasmine-spec-reporter": "~7.0.0",
-    "karma": "~6.3.7",
+    "karma": "~6.3.9",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
