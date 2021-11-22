@@ -18,14 +18,14 @@
   "dependencies": {
     "@angular/common": "~11.2.14",
     "@angular/compiler": "~11.2.14",
-    "@angular/core": "~11.2.14",
+    "@angular/core": "~13.0.2",
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
     "@open-amt-cloud-toolkit/ui-toolkit": "~2.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
-    "xterm": "^4.14.1",
+    "xterm": "^4.15.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
