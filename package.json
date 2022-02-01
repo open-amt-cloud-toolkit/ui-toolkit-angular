@@ -2,7 +2,12 @@
   "name": "@open-amt-cloud-toolkit/ui-toolkit-angular",
   "version": "2.0.2",
   "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/issues"
+  },
+  "homepage": "https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular#readme",
   "scripts": {
+    "prepublishOnly": "cp package.json dist",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build kvm && ng build sol",
