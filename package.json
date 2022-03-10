@@ -31,7 +31,7 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
     "xterm": "^4.17.0",
-    "zone.js": "~0.11.3"
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.14",
@@ -45,7 +45,7 @@
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.3.16",
     "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.1.0",
+    "karma-coverage": "~2.2.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^11.0.0",
