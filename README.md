@@ -18,3 +18,4 @@ To succesfully deploy the UI Toolkit using Angular, the following software must 
    ```bash
    npm install @open-amt-cloud-toolkit/ui-toolkit-angular
    ```
+
