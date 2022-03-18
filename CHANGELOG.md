@@ -1,5 +1,30 @@
-<a name="unreleased"></a>
-## [Unreleased]
+<a name="v2.0.3"></a>
+## [v2.0.3] - 2022-03-18
+### Build
+- **deps:** bump xterm from 4.16.0 to 4.17.0 (#bf73267) 
+- **deps:** bump xterm from 4.14.1 to 4.15.0 (#aef9bb7) 
+- **deps:** bump zone.js from 0.11.4 to 0.11.5 (#f603089) 
+- **deps:** bump xterm from 4.15.0 to 4.16.0 (#6c6e74e) 
+- **deps:** bump [@open](https://github.com/open)-amt-cloud-toolkit/ui-toolkit from 2.0.2 to 2.0.3 (#c0bc2a8) 
+- **deps-dev:** bump karma from 6.3.10 to 6.3.12 (#547ff39) 
+- **deps-dev:** bump karma from 6.3.13 to 6.3.16 (#ee97fd4) 
+- **deps-dev:** bump ts-node from 10.4.0 to 10.5.0 (#9474ed0) 
+- **deps-dev:** bump karma from 6.3.12 to 6.3.13 (#74db6c2) 
+- **deps-dev:** bump karma-coverage from 2.1.0 to 2.2.0 (#8a87bb1) 
+- **deps-dev:** bump jasmine-core from 3.10.1 to 4.0.0 (#ec6fc2b) 
+- **deps-dev:** bump karma from 6.3.9 to 6.3.10 (#f280ce1) 
+- **deps-dev:** bump jasmine-core from 4.0.0 to 4.0.1 (#bd44812) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 3.10.2 to 3.10.3 (#9f906a3) 
+- **deps-dev:** bump karma-coverage from 2.0.3 to 2.1.0 (#86557b3) 
+- **deps-dev:** bump karma from 6.3.7 to 6.3.9 (#164ad6d) 
+- **deps-dev:** bump ts-node from 10.5.0 to 10.7.0 (#8debf42) 
+- **deps-dev:** bump karma from 6.3.16 to 6.3.17 (#1650205) 
+
+### Ci
+- **jenkinsfile:** removes protex scan (#c2cd4dd) 
+- **node:** bump from 14.x to 16.x (#8af41b0) 
+- **release.yml:** fixes README.md reference (#da4364f) 
+- **semantic-release:** adds automated releases (#0c0eb84) 
 
 
 <a name="2.0.2"></a>
