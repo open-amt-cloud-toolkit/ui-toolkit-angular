@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http'
   declarations: [KvmComponent],
   imports: [
     HttpClientModule,
-    BrowserModule,
+    BrowserModule
   ],
   exports: [KvmComponent],
   schemas: []

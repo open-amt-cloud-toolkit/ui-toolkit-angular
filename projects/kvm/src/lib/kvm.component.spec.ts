@@ -3,7 +3,6 @@ import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core
 import { KvmComponent } from './kvm.component'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AMTDesktop, AMTRedirector, ConsoleLogger, DataProcessor, KeyBoardHelper, MouseHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core'
-import { EventEmitter } from '@angular/core'
 
 describe('KvmComponent', () => {
   let component: KvmComponent
@@ -17,7 +16,7 @@ describe('KvmComponent', () => {
       .compileComponents()
   })
 
-  const setup = () => {
+  const setup = (): void => {
     fixture = TestBed.createComponent(KvmComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
@@ -47,7 +46,6 @@ describe('KvmComponent', () => {
     expect(component.mpsServer).toEqual('')
     expect(component.deviceId).toEqual('')
     expect(component.authToken).toEqual('')
-
   })
 
   it('should autoconnect on pageload', () => {
@@ -114,5 +112,4 @@ describe('KvmComponent', () => {
     expect(component.mouseHelper).not.toBeNull()
     expect(component.mouseHelper.mousemove).toHaveBeenCalled()
   })
-
 })

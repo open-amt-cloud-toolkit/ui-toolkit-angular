@@ -22,11 +22,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() public authToken = ''
   @Input() public deviceId = ''
 
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
         this.init()
@@ -36,18 +32,18 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit (): void {
     this.init()
   }
 
-  init(): void {
+  init (): void {
     this.instantiate()
     setTimeout(() => {
       this.startSol()
     }, 4000)
   }
 
-  instantiate(): void {
+  instantiate (): void {
     this.terminal = new AmtTerminal()
     this.dataProcessor = new TerminalDataProcessor(this.terminal)
     this.redirector = new AMTRedirector(
@@ -61,7 +57,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
       0,
       this.authToken,
       this.mpsServer
-      )
+    )
     this.terminal.onSend = this.redirector.send.bind(this.redirector)
     this.redirector.onNewState = this.terminal.StateChange.bind(this.terminal)
     this.redirector.onStateChanged = this.onTerminalStateChange.bind(this)
@@ -76,31 +72,30 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-
-  handleKeyPress(domEvent: any): void {
+  handleKeyPress (domEvent: any): void {
     this.terminal.TermSendKeys(domEvent)
   }
 
-  handleClearTerminal(): void {
+  handleClearTerminal (): void {
     this.term.reset()
   }
 
-  handleWriteToXterm(str: string): void {
+  handleWriteToXterm (str: string): void {
     this.term.write(str)
   }
 
-  onTerminalStateChange(redirector: AMTRedirector, state: number): void {
+  onTerminalStateChange (redirector: AMTRedirector, state: number): void {
     this.deviceStatus.emit(state)
     this.deviceState = state
   }
 
-  startSol(): void {
+  startSol (): void {
     if (this.redirector !== null) {
       this.redirector.start(WebSocket)
     }
   }
 
-  stopSol(): void {
+  stopSol (): void {
     if (this.redirector !== null) {
       this.redirector.stop()
       this.handleClearTerminal()
@@ -109,14 +104,14 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  cleanup(): void {
+  cleanup (): void {
     this.terminal = null
     this.redirector = null
     this.dataProcessor = null
     this.term = null
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy (): void {
     this.stopSol()
   }
 }

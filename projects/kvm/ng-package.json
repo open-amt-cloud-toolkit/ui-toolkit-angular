@@ -5,9 +5,6 @@
     "./src/**/*.scss"
   ],
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "@open-amt-cloud-toolkit/ui-toolkit/core" : "@open-amt-cloud-toolkit.ui-toolkit.core"
-    }
+    "entryFile": "src/public-api.ts"
   }
 }
