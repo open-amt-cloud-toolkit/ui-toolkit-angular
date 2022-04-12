@@ -5,7 +5,7 @@ export declare class TerminalComponent implements OnInit {
     handleKeyPress: EventEmitter<any>;
     container: any;
     ngOnInit(): void;
-    static ɵfac: i0.ɵɵFactoryDef<TerminalComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDefWithMeta<TerminalComponent, "amt-terminal", never, { "term": "term"; }, { "handleKeyPress": "handleKeyPress"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<TerminalComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TerminalComponent, "amt-terminal", never, { "term": "term"; }, { "handleKeyPress": "handleKeyPress"; }, never, never>;
 }
 //# sourceMappingURL=terminal.component.d.ts.map

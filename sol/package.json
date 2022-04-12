@@ -9,14 +9,27 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "main": "bundles/sol.umd.js",
-  "module": "fesm2015/sol.js",
-  "es2015": "fesm2015/sol.js",
-  "esm2015": "esm2015/sol.js",
-  "fesm2015": "fesm2015/sol.js",
+  "module": "fesm2015/sol.mjs",
+  "es2020": "fesm2020/sol.mjs",
+  "esm2020": "esm2020/sol.mjs",
+  "fesm2020": "fesm2020/sol.mjs",
+  "fesm2015": "fesm2015/sol.mjs",
   "typings": "sol.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./sol.d.ts",
+      "esm2020": "./esm2020/sol.mjs",
+      "es2020": "./fesm2020/sol.mjs",
+      "es2015": "./fesm2015/sol.mjs",
+      "node": "./fesm2015/sol.mjs",
+      "default": "./fesm2020/sol.mjs"
+    }
+  },
   "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy in full compilation mode. This is not allowed.\\nPlease delete and rebuild the package with Ivy partial compilation mode, before attempting to publish.\\n')\" && exit 1"
   }
 }

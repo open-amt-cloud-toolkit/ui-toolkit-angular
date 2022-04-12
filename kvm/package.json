@@ -8,14 +8,27 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "main": "bundles/kvm.umd.js",
-  "module": "fesm2015/kvm.js",
-  "es2015": "fesm2015/kvm.js",
-  "esm2015": "esm2015/kvm.js",
-  "fesm2015": "fesm2015/kvm.js",
+  "module": "fesm2015/kvm.mjs",
+  "es2020": "fesm2020/kvm.mjs",
+  "esm2020": "esm2020/kvm.mjs",
+  "fesm2020": "fesm2020/kvm.mjs",
+  "fesm2015": "fesm2015/kvm.mjs",
   "typings": "kvm.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./kvm.d.ts",
+      "esm2020": "./esm2020/kvm.mjs",
+      "es2020": "./fesm2020/kvm.mjs",
+      "es2015": "./fesm2015/kvm.mjs",
+      "node": "./fesm2015/kvm.mjs",
+      "default": "./fesm2020/kvm.mjs"
+    }
+  },
   "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy in full compilation mode. This is not allowed.\\nPlease delete and rebuild the package with Ivy partial compilation mode, before attempting to publish.\\n')\" && exit 1"
   }
 }

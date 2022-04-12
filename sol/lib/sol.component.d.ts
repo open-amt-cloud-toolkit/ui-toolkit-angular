@@ -14,7 +14,6 @@ export declare class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     mpsServer: string;
     authToken: string;
     deviceId: string;
-    constructor();
     ngOnInit(): void;
     ngAfterViewInit(): void;
     init(): void;
@@ -27,7 +26,7 @@ export declare class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     stopSol(): void;
     cleanup(): void;
     ngOnDestroy(): void;
-    static ɵfac: i0.ɵɵFactoryDef<SolComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDefWithMeta<SolComponent, "amt-sol", never, { "deviceConnection": "deviceConnection"; "mpsServer": "mpsServer"; "authToken": "authToken"; "deviceId": "deviceId"; }, { "deviceStatus": "deviceStatus"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SolComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SolComponent, "amt-sol", never, { "deviceConnection": "deviceConnection"; "mpsServer": "mpsServer"; "authToken": "authToken"; "deviceId": "deviceId"; }, { "deviceStatus": "deviceStatus"; }, never, never>;
 }
 //# sourceMappingURL=sol.component.d.ts.map

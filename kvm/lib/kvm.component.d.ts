@@ -27,7 +27,6 @@ export declare class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
         value: number;
         viewValue: string;
     }[];
-    constructor();
     ngOnInit(): void;
     ngAfterViewInit(): void;
     instantiate(): void;
@@ -42,7 +41,7 @@ export declare class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     onMousedown(event: MouseEvent): void;
     onMousemove(event: MouseEvent): void;
     ngOnDestroy(): void;
-    static ɵfac: i0.ɵɵFactoryDef<KvmComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDefWithMeta<KvmComponent, "amt-kvm", never, { "width": "width"; "height": "height"; "mpsServer": "mpsServer"; "authToken": "authToken"; "deviceId": "deviceId"; "deviceConnection": "deviceConnection"; "selectedEncoding": "selectedEncoding"; }, { "deviceStatus": "deviceStatus"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<KvmComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<KvmComponent, "amt-kvm", never, { "width": "width"; "height": "height"; "mpsServer": "mpsServer"; "authToken": "authToken"; "deviceId": "deviceId"; "deviceConnection": "deviceConnection"; "selectedEncoding": "selectedEncoding"; }, { "deviceStatus": "deviceStatus"; }, never, never>;
 }
 //# sourceMappingURL=kvm.component.d.ts.map
