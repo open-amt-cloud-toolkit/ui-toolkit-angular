@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -23,7 +22,6 @@ import {
 } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 import { fromEvent, timer } from 'rxjs'
 import { throttleTime } from 'rxjs/operators'
-import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'amt-kvm',
@@ -61,13 +59,7 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     { value: 2, viewValue: 'RLE 16' }
   ]
 
-  constructor() {
-
-  }
-
-
-
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.logger = new ConsoleLogger(1)
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
@@ -82,11 +74,11 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit (): void {
     this.init()
   }
 
-  instantiate(): void {
+  instantiate (): void {
     this.context = this.canvas?.nativeElement.getContext('2d')
     this.redirector = new AMTKvmDataRedirector(
       this.logger,
@@ -132,25 +124,25 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     this.deviceStatus.emit(state)
   }
 
-  onRedirectorError(): void {
+  onRedirectorError (): void {
     this.reset()
   }
 
-  init(): void {
+  init (): void {
     this.instantiate()
     setTimeout(() => {
       this.autoConnect()
     }, 4000)
   }
 
-  autoConnect(): void {
+  autoConnect (): void {
     if (this.redirector != null) {
       this.redirector.start(WebSocket)
       this.keyboardHelper.GrabKeyInput()
     }
   }
 
-  onEncodingChange(): void {
+  onEncodingChange (): void {
     this.stopKvm()
     timer(1000).subscribe(() => {
       this.autoConnect()
@@ -172,25 +164,25 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reset()
   }
 
-  onMouseup(event: MouseEvent): void {
+  onMouseup (event: MouseEvent): void {
     if (this.mouseHelper != null) {
       this.mouseHelper.mouseup(event)
     }
   }
 
-  onMousedown(event: MouseEvent): void {
+  onMousedown (event: MouseEvent): void {
     if (this.mouseHelper != null) {
       this.mouseHelper.mousedown(event)
     }
   }
 
-  onMousemove(event: MouseEvent): void {
+  onMousemove (event: MouseEvent): void {
     if (this.mouseHelper != null) {
       this.mouseHelper.mousemove(event)
     }
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy (): void {
     this.stopKvm()
   }
 }

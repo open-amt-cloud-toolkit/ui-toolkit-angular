@@ -11,20 +11,20 @@ describe('SolComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SolComponent ],
-      imports: [ RouterTestingModule],
+      declarations: [SolComponent],
+      imports: [RouterTestingModule],
       providers: [{
         provide: 'userInput',
-          useValue: {
-            mpsServer: 'https://localhost/mps'
-          }
+        useValue: {
+          mpsServer: 'https://localhost/mps'
+        }
       }]
 
     })
-    .compileComponents()
+      .compileComponents()
   })
 
-  const setup = () => {
+  const setup = (): void => {
     fixture = TestBed.createComponent(SolComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
@@ -97,7 +97,7 @@ describe('SolComponent', () => {
     spyOn(component.terminal, 'TermSendKeys')
 
     const domEvent = {
-      code : 'A'
+      code: 'A'
     }
     component.handleKeyPress(domEvent)
     expect(component.terminal.TermSendKeys).toHaveBeenCalled()
