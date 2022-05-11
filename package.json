@@ -46,7 +46,7 @@
     "@types/jasmine": "~4.0.3",
     "@types/node": "^16.11.26",
     "@typescript-eslint/eslint-plugin": "5.22.0",
-    "@typescript-eslint/parser": "5.22.0",
+    "@typescript-eslint/parser": "5.23.0",
     "codelyzer": "^6.0.0",
     "eslint": "^8.14.0",
     "eslint-config-standard-with-typescript": "^21.0.1",
