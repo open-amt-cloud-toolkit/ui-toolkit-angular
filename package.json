@@ -21,12 +21,12 @@
     "build:sol": "ng build sol"
   },
   "dependencies": {
-    "@angular/common": "~13.3.7",
+    "@angular/common": "~13.3.8",
     "@angular/compiler": "~13.3.4",
     "@angular/core": "~13.3.2",
     "@angular/platform-browser": "~13.3.5",
     "@angular/platform-browser-dynamic": "~13.3.7",
-    "@angular/router": "~13.3.7",
+    "@angular/router": "~13.3.8",
     "@open-amt-cloud-toolkit/ui-toolkit": "~2.0.6",
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
