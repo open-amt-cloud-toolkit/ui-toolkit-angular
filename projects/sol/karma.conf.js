@@ -35,6 +35,9 @@ module.exports = function (config) {
       ]
     },
     reporters: ['progress', 'coverage', 'junit', 'kjhtml'],
+    junitReporter: {
+      outputFile: 'ui-toolkit-angular-sol.xml',
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
