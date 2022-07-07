@@ -1,6 +1,6 @@
 {
   "name": "@open-amt-cloud-toolkit/ui-toolkit-angular",
-  "version": "2.0.2",
+  "version": "3.0.2",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/issues"
@@ -31,7 +31,7 @@
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
     "xterm": "^4.18.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.7",
