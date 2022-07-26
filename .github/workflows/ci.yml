@@ -72,3 +72,13 @@ jobs:
           git add .
           git commit -m 'ci: ${{github.event.head_commit.message}}'
           git push origin dist
+      - name: Upload Karma Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: ui-toolkit-angular-kvm-unit
+          path: '**/ui-toolkit-angular-kvm.xml'
+      - name: Upload Karma Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: ui-toolkit-angular-sol-unit
+          path: '**/ui-toolkit-angular-sol.xml'

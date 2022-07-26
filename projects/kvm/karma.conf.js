@@ -7,6 +7,7 @@ module.exports = function (config) {
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
+      require('karma-junit-reporter'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
@@ -33,7 +34,10 @@ module.exports = function (config) {
         { type: 'lcov' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'coverage', 'junit', 'kjhtml'],
+    junitReporter: {
+      outputFile: 'ui-toolkit-angular-kvm.xml',
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -47,5 +51,6 @@ module.exports = function (config) {
     },
     singleRun: false,
     restartOnFileChange: true
+
   })
 }
