@@ -52,26 +52,6 @@ jobs:
       - name: Run Build Sol
         run: npm run build:sol
 
-      #checkout the dist branch
-      - uses: actions/checkout@v2
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          path: "to-be-published"
-          ref: "dist"
-      #copy the built dist content
-      - name: Copy
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: cp -rlf dist/* ./to-be-published/
-      #publish it
-      - name: Publish content
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: |
-          cd ./to-be-published
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m 'ci: ${{github.event.head_commit.message}}'
-          git push origin dist
       - name: Upload Karma Results
         uses: actions/upload-artifact@v3
         with:
