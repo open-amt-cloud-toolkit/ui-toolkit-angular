@@ -43,7 +43,7 @@
     "@angular/cdk": "^13.3.9",
     "@angular/cli": "~13.3.7",
     "@angular/compiler-cli": "~13.3.11",
-    "@types/jasmine": "~4.0.3",
+    "@types/jasmine": "~4.3.0",
     "@types/node": "^16.11.26",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
