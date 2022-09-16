@@ -1,5 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
+import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { SolComponent } from './sol.component'
 import { TerminalComponent } from './terminal/terminal.component'
@@ -11,6 +12,7 @@ import { TerminalComponent } from './terminal/terminal.component'
   ],
   imports: [
     HttpClientModule,
+    CommonModule,
     BrowserModule
   ],
   exports: [
