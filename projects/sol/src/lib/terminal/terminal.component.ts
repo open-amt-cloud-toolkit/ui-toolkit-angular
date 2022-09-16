@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core'
-import { C, V, SPACE } from '@angular/cdk/keycodes'
+import { C, V } from '@angular/cdk/keycodes'
 @Component({
   selector: 'amt-terminal',
   templateUrl: './terminal.component.html'
@@ -17,15 +17,23 @@ export class TerminalComponent implements OnInit {
     })
     this.term.attachCustomKeyEventHandler((e: any) => {
       e.stopPropagation()
-      e.preventDefault()
-      if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === C) {
-        return navigator.clipboard.writeText(this.term.getSelection())
-      } else if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === V) {
-        return navigator.clipboard.readText().then(text => {
-          this.handleKeyPress.emit(text)
-        })
-      } else if (e.code === SPACE) {
-        return this.handleKeyPress.emit(e.key)
+      // Due to a new 'HACK' in xtermjs, calling e.preventDefault() here
+      // results in all upper case charaters being dropped,
+      // so only call it if we 'consume' the keydown here.
+      // Note: this function can be called for 'keypress' and 'keyup' events as well as 'keydown' events
+      if (e.type === 'keydown') {
+        if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === C) {
+          e.preventDefault()
+          return navigator.clipboard.writeText(this.term.getSelection())
+        } else if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === V) {
+          e.preventDefault()
+          return navigator.clipboard.readText().then(text => {
+            this.handleKeyPress.emit(text)
+          })
+        } else if (e.code === 'Space') { // or e.keyCode === SPACE
+          e.preventDefault()
+          this.handleKeyPress.emit(e.key)
+        }
       }
     })
   }
