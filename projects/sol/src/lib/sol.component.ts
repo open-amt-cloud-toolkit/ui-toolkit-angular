@@ -9,11 +9,11 @@ import { AmtTerminal, AMTRedirector, TerminalDataProcessor, ConsoleLogger, Proto
   encapsulation: ViewEncapsulation.None
 })
 export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
-  terminal: any
+  terminal: AmtTerminal
   container!: any
-  term: any
-  redirector: any
-  dataProcessor: any
+  term: Terminal
+  redirector: AMTRedirector
+  dataProcessor: TerminalDataProcessor
   deviceState = 0
   logger: ConsoleLogger = new ConsoleLogger(LogLevel.ERROR)
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
@@ -73,15 +73,15 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   handleKeyPress (domEvent: any): void {
-    this.terminal.TermSendKeys(domEvent)
+    this.terminal?.TermSendKeys(domEvent)
   }
 
   handleClearTerminal (): void {
-    this.term.reset()
+    this.term?.reset()
   }
 
   handleWriteToXterm (str: string): void {
-    this.term.write(str)
+    this.term?.write(str)
   }
 
   onTerminalStateChange (redirector: AMTRedirector, state: number): void {
@@ -99,16 +99,16 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.redirector !== null) {
       this.redirector.stop()
       this.handleClearTerminal()
-      this.term.dispose()
+      this.term?.dispose()
       this.cleanup()
     }
   }
 
   cleanup (): void {
-    this.terminal = null
-    this.redirector = null
-    this.dataProcessor = null
-    this.term = null
+    (this.terminal as any) = null;
+    (this.redirector as any) = null;
+    (this.dataProcessor as any) = null;
+    (this.term as any) = null
   }
 
   ngOnDestroy (): void {
