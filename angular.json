@@ -95,6 +95,5 @@
     "@schematics/angular:component": {
       "styleext": "css"
     }
-  },
-  "defaultProject": "kvm"
+  }
 }
