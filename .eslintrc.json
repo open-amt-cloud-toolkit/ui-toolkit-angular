@@ -1,7 +1,8 @@
 {
   "root": true,
   "ignorePatterns": [
-    "**/*.js"
+    "**/*.js",
+    "dist/"
   ],
   "env": {
     "es2020": true,
