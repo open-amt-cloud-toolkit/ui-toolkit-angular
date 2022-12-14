@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@angular/common": "^14.2.3",
-    "@angular/compiler": "^14.2.3",
+    "@angular/compiler": "^15.0.3",
     "@angular/core": "^14.2.3",
     "@angular/platform-browser": "^14.2.3",
     "@angular/platform-browser-dynamic": "^14.2.3",
