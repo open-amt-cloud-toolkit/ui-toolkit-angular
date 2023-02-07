@@ -29,13 +29,13 @@
     "@angular/router": "^14.2.12",
     "@open-amt-cloud-toolkit/ui-toolkit": "~2.0.8",
     "rxjs": "~7.8.0",
-    "tslib": "^2.4.1",
+    "tslib": "^2.5.0",
     "xterm": "^5.1.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.10",
-    "@angular-eslint/builder": "15.1.0",
+    "@angular-eslint/builder": "15.2.0",
     "@angular-eslint/eslint-plugin": "15.2.0",
     "@angular-eslint/eslint-plugin-template": "15.2.0",
     "@angular-eslint/schematics": "14.4.0",
