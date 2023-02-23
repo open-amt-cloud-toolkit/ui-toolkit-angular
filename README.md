@@ -1,4 +1,4 @@
-![codecov.io](https://codecov.io/github/open-amt-cloud-toolkit/ui-toolkit-angular/coverage.svg?branch=main)
+![codecov.io](https://codecov.io/github/open-amt-cloud-toolkit/ui-toolkit-angular/coverage.svg?branch=main) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular/badge)](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular)
 
 # Angular UI Components
 
