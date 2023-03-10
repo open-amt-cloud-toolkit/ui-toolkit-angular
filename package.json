@@ -25,7 +25,7 @@
     "@angular/compiler": "^15.2.1",
     "@angular/core": "^15.2.1",
     "@angular/platform-browser": "^15.2.1",
-    "@angular/platform-browser-dynamic": "^15.2.1",
+    "@angular/platform-browser-dynamic": "^15.2.2",
     "@angular/router": "^15.2.1",
     "@open-amt-cloud-toolkit/ui-toolkit": "~2.0.8",
     "rxjs": "~7.8.0",
