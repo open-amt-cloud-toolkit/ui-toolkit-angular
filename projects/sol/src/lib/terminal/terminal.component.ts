@@ -15,19 +15,19 @@ export class TerminalComponent implements OnInit {
     this.term.onData((data: any) => {
       this.handleKeyPress.emit(data)
     })
-    this.term.attachCustomKeyEventHandler((e: any) => {
+    this.term.attachCustomKeyEventHandler(async (e: any) => {
       e.stopPropagation()
       // Due to a new 'HACK' in xtermjs, calling e.preventDefault() here
-      // results in all upper case charaters being dropped,
+      // results in all upper case characters being dropped,
       // so only call it if we 'consume' the keydown here.
       // Note: this function can be called for 'keypress' and 'keyup' events as well as 'keydown' events
       if (e.type === 'keydown') {
         if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === C) {
           e.preventDefault()
-          return navigator.clipboard.writeText(this.term.getSelection())
+          await navigator.clipboard.writeText(this.term.getSelection())
         } else if (e.ctrlKey === true && e.shiftKey === true && e.keyCode === V) {
           e.preventDefault()
-          return navigator.clipboard.readText().then(text => {
+          await navigator.clipboard.readText().then(text => {
             this.handleKeyPress.emit(text)
           })
         } else if (e.code === 'Space') { // or e.keyCode === SPACE
