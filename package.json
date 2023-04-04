@@ -21,7 +21,7 @@
     "build:sol": "ng build sol"
   },
   "dependencies": {
-    "@angular/common": "^15.2.4",
+    "@angular/common": "^15.2.5",
     "@angular/compiler": "^15.2.4",
     "@angular/core": "^15.2.4",
     "@angular/platform-browser": "^15.2.4",
