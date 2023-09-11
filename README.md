@@ -1,4 +1,8 @@
-![codecov.io](https://codecov.io/github/open-amt-cloud-toolkit/ui-toolkit-angular/coverage.svg?branch=main) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular/badge)](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular) [![Discord Shield](https://discordapp.com/api/guilds/1063200098680582154/widget.png?style=shield)](https://discord.gg/yrcMp2kDWh)
+![CodeQL](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/actions/workflows/codeql-analysis.yml/badge.svg?branch=main&event=push) 
+[![CI](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/actions/workflows/ci.yml/badge.svg)](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/actions/workflows/ci.yml)
+![codecov.io](https://codecov.io/github/open-amt-cloud-toolkit/ui-toolkit-angular/coverage.svg?branch=main) 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular/badge)](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular) 
+[![Discord Shield](https://discordapp.com/api/guilds/1063200098680582154/widget.png?style=shield)](https://discord.gg/yrcMp2kDWh)
 
 # Angular UI Components
 
