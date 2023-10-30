@@ -1,3 +1,39 @@
+<a name="6.0.4"></a>
+## [6.0.4] - 2023-10-30
+### Build
+- bump [@angular](https://github.com/angular)/cdk to 16.2.10, cli to 16.2.8, core to 16.2.11 ([#882](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/882)) (#a2a1d3f) 
+- bump angular cdk to 16.2.7, cli to 16.2.5 and core to 16.2.8 ([#847](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/847)) (#f3b2681) 
+- bump angular cdk to 16.2.9 and core to 16.2.10 ([#865](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/865)) (#1bd5c16) 
+- bump [@angular](https://github.com/angular)/cli to 16.2.7 ([#872](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/872)) (#a3b7b84) 
+- **deps:** bump github/codeql-action from 2.22.1 to 2.22.2 ([#860](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/860)) (#3e92b79) 
+- **deps:** bump github/codeql-action from 2.22.0 to 2.22.1 ([#853](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/853)) (#725156a) 
+- **deps:** bump ossf/scorecard-action from 2.2.0 to 2.3.0 ([#848](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/848)) (#57b5625) 
+- **deps:** bump ossf/scorecard-action from 2.3.0 to 2.3.1 ([#875](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/875)) (#e8a7694) 
+- **deps:** bump actions/setup-node from 3.8.1 to 4.0.0 ([#876](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/876)) (#27673a0) 
+- **deps:** bump github/codeql-action from 2.21.9 to 2.22.0 ([#849](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/849)) (#0491b8c) 
+- **deps:** bump github/codeql-action from 2.22.4 to 2.22.5 ([#885](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/885)) (#923b7be) 
+- **deps:** bump actions/checkout from 4.1.0 to 4.1.1 ([#864](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/864)) (#347aa4a) 
+- **deps:** bump github/codeql-action from 2.22.3 to 2.22.4 ([#871](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/871)) (#cb003c6) 
+- **deps:** bump github/codeql-action from 2.22.2 to 2.22.3 ([#862](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/862)) (#f2f92ee) 
+- **deps:** bump [@open](https://github.com/open)-amt-cloud-toolkit/ui-toolkit ([#845](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/845)) (#f1b8dea) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.8.7 to 20.8.8 ([#877](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/877)) (#8c64015) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.8.5 to 20.8.7 ([#867](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/867)) (#801adfe) 
+- **deps-dev:** bump eslint from 8.51.0 to 8.52.0 ([#873](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/873)) (#523374c) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.8.4 to 20.8.5 ([#861](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/861)) (#e653a90) 
+- **deps-dev:** bump [@angular](https://github.com/angular)/cli from 16.2.5 to 16.2.6 ([#855](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/855)) (#663e237) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.8.3 to 20.8.4 ([#854](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/854)) (#cea6d83) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 5.1.0 to 5.1.1 ([#868](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/868)) (#651ce6d) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.8.8 to 20.8.9 ([#878](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/878)) (#c086466) 
+- **deps-dev:** bump [@angular](https://github.com/angular)/cdk from 16.2.9 to 16.2.10 ([#884](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/884)) (#ec260e5) 
+- **deps-dev:** bump eslint from 8.50.0 to 8.51.0 ([#850](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/850)) (#f699613) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.8.2 to 20.8.3 ([#851](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/851)) (#cae1a68) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-devkit/build-angular ([#886](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/886)) (#d5c886a) 
+- **deps-dev:** bump [@types](https://github.com/types)/jasmine from 4.3.6 to 5.1.0 ([#844](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/844)) (#f8be5a1) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-devkit/build-angular ([#857](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/857)) (#e70ce6e) 
+
+### Chore
+- update build tasks, package.json and changelog (#307ab26) 
+
 <a name="6.0.3"></a>
 ## [6.0.3] - 2023-10-04
 ### Build
