@@ -2,7 +2,7 @@ import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core
 
 import { KvmComponent } from './kvm.component'
 import { RouterTestingModule } from '@angular/router/testing'
-import { AMTDesktop, AMTRedirector, ConsoleLogger, DataProcessor, KeyBoardHelper, MouseHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core'
+import { AMTDesktop, AMTRedirector, DataProcessor, KeyBoardHelper, MouseHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 describe('KvmComponent', () => {
   let component: KvmComponent
@@ -37,7 +37,6 @@ describe('KvmComponent', () => {
     expect(component).toBeTruthy()
     expect(component.redirector).toBeInstanceOf(AMTRedirector)
     expect(component.module).toBeInstanceOf(AMTDesktop)
-    expect(component.logger).toBeInstanceOf(ConsoleLogger)
     expect(component.mouseHelper).toBeInstanceOf(MouseHelper)
     expect(component.keyboardHelper).toBeInstanceOf(KeyBoardHelper)
     expect(component.dataProcessor).toBeInstanceOf(DataProcessor)

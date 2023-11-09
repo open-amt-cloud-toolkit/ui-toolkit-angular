@@ -1,6 +1,6 @@
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
-import { AMTRedirector, AmtTerminal, ConsoleLogger } from '@open-amt-cloud-toolkit/ui-toolkit/core'
+import { AMTRedirector, AmtTerminal } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 import { Terminal } from 'xterm'
 
 import { SolComponent } from './sol.component'
@@ -46,7 +46,6 @@ describe('SolComponent', () => {
     expect(component.terminal).toBeInstanceOf(AmtTerminal)
     expect(component.term).toBeInstanceOf(Terminal)
     expect(component.redirector).toBeInstanceOf(AMTRedirector)
-    expect(component.logger).toBeInstanceOf(ConsoleLogger)
   })
 
   it('should stop the websocket and dispose terminal on sol stop', () => {
