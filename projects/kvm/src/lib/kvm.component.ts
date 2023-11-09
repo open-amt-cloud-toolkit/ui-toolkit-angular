@@ -12,10 +12,9 @@ import {
 import {
   AMTDesktop,
   AMTKvmDataRedirector,
-  ConsoleLogger,
+  RedirectorConfig,
   DataProcessor,
   IDataProcessor,
-  ILogger,
   KeyBoardHelper,
   MouseHelper,
   Protocol
@@ -49,7 +48,6 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   dataProcessor!: IDataProcessor | null
   mouseHelper!: MouseHelper
   keyboardHelper!: KeyBoardHelper
-  logger!: ILogger
   powerState: any = 0
   selected = 1
   timeInterval!: any
@@ -60,7 +58,6 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   ]
 
   ngOnInit (): void {
-    this.logger = new ConsoleLogger(1)
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
         this.init()
@@ -80,25 +77,21 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
 
   instantiate (): void {
     this.context = this.canvas?.nativeElement.getContext('2d')
-    this.redirector = new AMTKvmDataRedirector(
-      this.logger,
-      Protocol.KVM,
-      new FileReader(),
-      this.deviceId,
-      16994,
-      '',
-      '',
-      0,
-      0,
-      this.authToken,
-      this.mpsServer
-    )
-    this.module = new AMTDesktop(this.logger as any, this.context)
-    this.dataProcessor = new DataProcessor(
-      this.logger,
-      this.redirector,
-      this.module
-    )
+    const config: RedirectorConfig = {
+      protocol: Protocol.KVM,
+      fr: new FileReader(),
+      host: this.deviceId,
+      port: 16994,
+      user: '',
+      pass: '',
+      tls: 0,
+      tls1only: 0,
+      authToken: this.authToken,
+      server: this.mpsServer
+    }
+    this.redirector = new AMTKvmDataRedirector(config)
+    this.module = new AMTDesktop(this.context)
+    this.dataProcessor = new DataProcessor(this.redirector, this.module)
     this.mouseHelper = new MouseHelper(this.module, this.redirector, 200)
     this.keyboardHelper = new KeyBoardHelper(this.module, this.redirector)
     this.redirector.onProcessData = this.module.processData.bind(this.module)
@@ -108,9 +101,7 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     this.redirector.onStateChanged = this.onConnectionStateChange.bind(this)
     this.redirector.onError = this.onRedirectorError.bind(this)
     this.module.onSend = this.redirector.send.bind(this.redirector)
-    this.module.onProcessData = this.dataProcessor.processData.bind(
-      this.dataProcessor
-    )
+    this.module.onProcessData = this.dataProcessor.processData.bind(this.dataProcessor)
     this.module.bpp = this.selected
     this.mouseMove = fromEvent(this.canvas?.nativeElement, 'mousemove')
     this.mouseMove.pipe(throttleTime(200)).subscribe((event: any) => {

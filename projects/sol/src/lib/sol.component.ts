@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, OnDestroy, Input, AfterViewInit } from '@angular/core'
 import { Terminal } from 'xterm'
-import { AmtTerminal, AMTRedirector, TerminalDataProcessor, ConsoleLogger, Protocol, LogLevel } from '@open-amt-cloud-toolkit/ui-toolkit/core'
+import { AmtTerminal, AMTRedirector, TerminalDataProcessor, RedirectorConfig, Protocol } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 @Component({
   selector: 'amt-sol',
@@ -15,7 +15,6 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   redirector: AMTRedirector
   dataProcessor: TerminalDataProcessor
   deviceState = 0
-  logger: ConsoleLogger = new ConsoleLogger(LogLevel.ERROR)
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
   @Input() public mpsServer = ''
@@ -46,18 +45,19 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
   instantiate (): void {
     this.terminal = new AmtTerminal()
     this.dataProcessor = new TerminalDataProcessor(this.terminal)
-    this.redirector = new AMTRedirector(
-      this.logger,
-      Protocol.SOL,
-      new FileReader(),
-      this.deviceId, 16994,
-      '',
-      '',
-      0,
-      0,
-      this.authToken,
-      this.mpsServer
-    )
+    const config: RedirectorConfig = {
+      protocol: Protocol.SOL,
+      fr: new FileReader(),
+      host: this.deviceId,
+      port: 16994,
+      user: '',
+      pass: '',
+      tls: 0,
+      tls1only: 0,
+      authToken: this.authToken,
+      server: this.mpsServer
+    }
+    this.redirector = new AMTRedirector(config)
     this.terminal.onSend = this.redirector.send.bind(this.redirector)
     this.redirector.onNewState = this.terminal.StateChange.bind(this.terminal)
     this.redirector.onStateChanged = this.onTerminalStateChange.bind(this)
