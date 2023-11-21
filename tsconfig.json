@@ -8,6 +8,9 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
+      "ider": [
+        "dist/ider"
+      ],
       "kvm": [
         "dist/kvm/kvm",
         "dist/kvm"
