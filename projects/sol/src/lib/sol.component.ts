@@ -1,3 +1,7 @@
+/*********************************************************************
+ * Copyright (c) Intel Corporation 2023
+ * SPDX-License-Identifier: Apache-2.0
+ **********************************************************************/
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, OnDestroy, Input, AfterViewInit } from '@angular/core'
 import { Terminal } from 'xterm'
 import { AmtTerminal, AMTRedirector, TerminalDataProcessor, RedirectorConfig, Protocol } from '@open-amt-cloud-toolkit/ui-toolkit/core'
