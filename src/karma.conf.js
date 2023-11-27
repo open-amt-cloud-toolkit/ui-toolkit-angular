@@ -26,7 +26,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage/kvm'),
+      dir: require('path').join(__dirname, '../coverage'),
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -36,7 +36,7 @@ module.exports = function (config) {
     },
     reporters: ['progress', 'coverage', 'junit', 'kjhtml'],
     junitReporter: {
-      outputFile: 'ui-toolkit-angular-kvm.xml',
+      outputFile: 'ui-toolkit-angular.xml',
     },
     port: 9876,
     colors: true,

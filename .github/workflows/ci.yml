@@ -46,27 +46,14 @@ jobs:
         run: npm run test-ci
 
       - uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
-        name: Upload Coverage Results (KVM)
+        name: Upload Coverage Results
         with:
-          directory: ./coverage/kvm
-
-      - uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
-        name: Upload Coverage Results (SOL)
-        with:
-          directory: ./coverage/sol
-      - name: Run Build Kvm
-        run: npm run build:kvm
-
-      - name: Run Build Sol
-        run: npm run build:sol
+          directory: ./coverage
+      - name: Run Build
+        run: npm run build
 
       - name: Upload Karma Results
         uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
         with:
-          name: ui-toolkit-angular-kvm-unit
-          path: '**/ui-toolkit-angular-kvm.xml'
-      - name: Upload Karma Results
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
-        with:
-          name: ui-toolkit-angular-sol-unit
-          path: '**/ui-toolkit-angular-sol.xml'
+          name: ui-toolkit-angular-unit
+          path: '**/ui-toolkit-angular.xml'
