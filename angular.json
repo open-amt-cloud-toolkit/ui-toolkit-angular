@@ -89,11 +89,49 @@
           }
         }
       }
+    },
+    "ider": {
+      "projectType": "library",
+      "root": "projects/ider",
+      "sourceRoot": "projects/ider/src",
+      "prefix": "amt",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ider/tsconfig.lib.json",
+            "project": "projects/ider/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ider/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "codeCoverage": true,
+            "main": "projects/ider/src/test.ts",
+            "tsConfig": "projects/ider/tsconfig.spec.json",
+            "karmaConfig": "projects/ider/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "**/*.ts",
+              "**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "css"
+      "style": "css"
     },
     "@angular-eslint/schematics:application": {
       "setParserOptionsProject": true
