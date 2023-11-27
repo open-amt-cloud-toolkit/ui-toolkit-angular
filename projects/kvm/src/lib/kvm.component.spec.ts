@@ -1,3 +1,7 @@
+/*********************************************************************
+ * Copyright (c) Intel Corporation 2023
+ * SPDX-License-Identifier: Apache-2.0
+ **********************************************************************/
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
 
 import { KvmComponent } from './kvm.component'

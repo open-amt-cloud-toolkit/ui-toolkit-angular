@@ -1,3 +1,7 @@
+/*********************************************************************
+ * Copyright (c) Intel Corporation 2023
+ * SPDX-License-Identifier: Apache-2.0
+ **********************************************************************/
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core'
 import { C, V } from '@angular/cdk/keycodes'
 @Component({
