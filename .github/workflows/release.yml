@@ -29,7 +29,6 @@ jobs:
         node-version: "20.x"
     - run: npm ci
     - run: npm run build --if-present
-    - run: rsync -a package.json README.md ./dist/
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@61680d0e9b02ff86f5648ade99e01be17f0260a4 # v4.0.0
       with:
