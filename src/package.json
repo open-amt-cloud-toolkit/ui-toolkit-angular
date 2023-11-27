@@ -1,0 +1,14 @@
+{
+    "name": "@open-amt-cloud-toolkit/ui-toolkit-angular",
+    "version": "0.0.1",
+    "peerDependencies": {
+      "@angular/common": "^17.0.0",
+      "@angular/core": "^17.0.0",
+      "xterm": "^4.19.0"
+    },
+    "dependencies": {
+      "tslib": "^2.4.0"
+    },
+    "sideEffects": false
+  }
+  
