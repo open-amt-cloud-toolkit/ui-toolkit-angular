@@ -6,9 +6,9 @@
  * Public API Surface
  */
 
-export * from './sol/lib/sol.component'
-export * from './sol/lib/sol.module'
-export * from './kvm/lib/kvm.component'
-export * from './kvm/lib/kvm.module'
-export * from './ider/lib/ider.component'
-export * from './ider/lib/ider.module'
+export * from './sol/src/sol.component'
+export * from './sol/src/sol.module'
+export * from './kvm/src/kvm.component'
+export * from './kvm/src/kvm.module'
+export * from './ider/src/ider.component'
+export * from './ider/src/ider.module'
