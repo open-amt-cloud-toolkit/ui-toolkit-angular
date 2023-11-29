@@ -19,7 +19,6 @@
     "@angular/common": "^17.0.4",
     "@angular/core": "^17.0.4",
     "xterm": "^5.3.0",
-    "rxjs": "~7.8.1",
     "@open-amt-cloud-toolkit/ui-toolkit": "~3.1.2"
   },
   "devDependencies": {
