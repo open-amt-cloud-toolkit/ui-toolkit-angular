@@ -8,7 +8,7 @@
     "ui-toolkit-angular":{
       "projectType": "library",
       "root": ".",
-      "sourceRoot": "src",
+      "sourceRoot": "",
       "prefix": "amt",
       "architect": {
         "build": {
@@ -28,7 +28,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "codeCoverage": true,
-            "main": "src/test.ts",
+            "main": "test.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js"
           }

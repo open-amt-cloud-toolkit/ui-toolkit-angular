@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  **********************************************************************/
 /*
- * Public API Surface of kvm
+ * Public API Surface of sol
  */
 
-export * from './lib/kvm.component'
-export * from './lib/kvm.module'
+export * from './sol.component'
+export * from './sol.module'
