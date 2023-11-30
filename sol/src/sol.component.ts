@@ -50,6 +50,7 @@ export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
     this.terminal = new AmtTerminal()
     this.dataProcessor = new TerminalDataProcessor(this.terminal)
     const config: RedirectorConfig = {
+      mode: 'sol',
       protocol: Protocol.SOL,
       fr: new FileReader(),
       host: this.deviceId,

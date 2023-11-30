@@ -82,6 +82,7 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   instantiate (): void {
     this.context = this.canvas?.nativeElement.getContext('2d')
     const config: RedirectorConfig = {
+      mode: 'kvm',
       protocol: Protocol.KVM,
       fr: new FileReader(),
       host: this.deviceId,
