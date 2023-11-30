@@ -51,6 +51,7 @@ export class IderComponent {
 
   instantiate (): void {
     const config: RedirectorConfig = {
+      mode: 'ider',
       protocol: Protocol.IDER,
       fr: new FileReader(),
       host: this.deviceId,
