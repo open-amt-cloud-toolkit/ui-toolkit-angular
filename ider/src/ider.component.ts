@@ -32,7 +32,7 @@ export class IderComponent {
   ngOnInit (): void {
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
-        this.instantiate()
+        this.init()
       } else {
         this.stopIder()
       }
@@ -40,7 +40,14 @@ export class IderComponent {
   }
 
   ngAfterViewInit (): void {
+    this.init()
+  }
+
+  init (): void {
     this.instantiate()
+    setTimeout(() => {
+      this.startIder()
+    }, 4000)
   }
 
   startIder (): void {
