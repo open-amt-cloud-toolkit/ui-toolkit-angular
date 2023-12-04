@@ -1,3 +1,43 @@
+<a name="7.2.1"></a>
+## [7.2.1] - 2023-12-04
+### Build
+- bump [@angular](https://github.com/angular)-eslint/schematics to 17.1.1 ([#984](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/984)) (#481fff6) 
+- **deps-dev:** bump [@angular](https://github.com/angular)/cdk from 17.0.1 to 17.0.2 ([#985](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/985)) (#aa7e3f3) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.10.1 to 20.10.2 ([#986](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/986)) (#23c67b5) 
+- **deps-dev:** bump eslint from 8.54.0 to 8.55.0 ([#987](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/987)) (#b9c9075) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.10.0 to 20.10.1 ([#981](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/981)) (#4024958) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/eslint-plugin-template ([#979](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/979)) (#f8b1ddc) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/template-parser ([#978](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/978)) (#5349544) 
+
+### Chore
+- update build tasks, package.json and changelog (#a65e131) 
+
+
+<a name="v7.2.0"></a>
+## [v7.2.0] - 2023-11-30
+### Build
+- bump angular/core to 17.0.5 and cli to 17.0.5 ([#974](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/974)) (#28c531a) 
+
+### Ci
+- remove git publish (#c2a010a) 
+- automatically updates package.json and changelog during release ([#976](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/976)) (#2b1659b) 
+- adds changelog and package.json update automation ([#975](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/975)) (#91b7ab2) 
+
+### Feat
+- add support for multiple redirection connections (#5a14346) 
+
+
+<a name="v7.1.5"></a>
+## [v7.1.5] - 2023-11-29
+### Fix
+- restructure project to be compatible with ng-package (#c77b714) 
+
+
+<a name="v7.1.4"></a>
+## [v7.1.4] - 2023-11-29
+### Fix
+- move ui-toolkit to peer dependency ([#966](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/966)) (#194f368) 
+
 <a name="7.1.3"></a>
 ## [7.1.3] - 2023-11-29
 ### Build
