@@ -23,7 +23,7 @@ import {
   MouseHelper,
   Protocol
 } from '@open-amt-cloud-toolkit/ui-toolkit/core'
-import { fromEvent, timer } from 'rxjs'
+import { Observable, fromEvent, timer } from 'rxjs'
 import { throttleTime } from 'rxjs/operators'
 
 @Component({
@@ -47,15 +47,15 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
   @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
   @Input() selectedEncoding: EventEmitter<number> = new EventEmitter<number>()
-  module: any
-  redirector: any
+  module: AMTDesktop | null
+  redirector: AMTKvmDataRedirector | null
   dataProcessor!: IDataProcessor | null
   mouseHelper!: MouseHelper
   keyboardHelper!: KeyBoardHelper
   powerState: any = 0
   selected = 1
   timeInterval!: any
-  mouseMove: any = null
+  mouseMove: Observable<MouseEvent>
   encodings = [
     { value: 1, viewValue: 'RLE 8' },
     { value: 2, viewValue: 'RLE 16' }
@@ -108,8 +108,9 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
     this.module.onSend = this.redirector.send.bind(this.redirector)
     this.module.onProcessData = this.dataProcessor.processData.bind(this.dataProcessor)
     this.module.bpp = this.selected
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     this.mouseMove = fromEvent(this.canvas?.nativeElement, 'mousemove')
-    this.mouseMove.pipe(throttleTime(200)).subscribe((event: any) => {
+    this.mouseMove.pipe(throttleTime(200)).subscribe((event: MouseEvent) => {
       if (this.mouseHelper != null) {
         this.mouseHelper.mousemove(event)
       }
@@ -155,7 +156,7 @@ export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   stopKvm = (): void => {
-    this.redirector.stop()
+    this.redirector?.stop()
     this.keyboardHelper.UnGrabKeyInput()
     this.reset()
   }

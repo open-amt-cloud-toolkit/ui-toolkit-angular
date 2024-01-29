@@ -53,7 +53,7 @@ describe('KvmComponent', () => {
 
   it('should autoconnect on pageload', () => {
     asyncSetup()
-    spyOn(component.redirector, 'start')
+    spyOn<any>(component.redirector, 'start')
     spyOn(component.keyboardHelper, 'GrabKeyInput')
     expect(component.redirector).not.toBeNull()
     expect(component.mpsServer).toEqual('wss://localhost')
@@ -62,11 +62,11 @@ describe('KvmComponent', () => {
 
   it('should reset all the objects once kvm is stopped', () => {
     setup()
-    spyOn(component.redirector, 'stop')
+    spyOn<any>(component.redirector, 'stop')
     spyOn(component.keyboardHelper, 'UnGrabKeyInput')
     const resetSpy = spyOn(component, 'reset')
     component.stopKvm()
-    expect(component.redirector.stop).toHaveBeenCalled()
+    expect(component.redirector?.stop).toHaveBeenCalled()
     expect(component.keyboardHelper.UnGrabKeyInput).toHaveBeenCalled()
     expect(resetSpy).toHaveBeenCalled()
   })
@@ -103,15 +103,15 @@ describe('KvmComponent', () => {
       pageX: 100,
       pageY: 211
     }
-    component.onMousedown(event)
+    component.onMousedown(event as MouseEvent)
     expect(component.mouseHelper).not.toBeNull()
     expect(component.mouseHelper.mousedown).toHaveBeenCalled()
 
-    component.onMouseup(event)
+    component.onMouseup(event as MouseEvent)
     expect(component.mouseHelper).not.toBeNull()
     expect(component.mouseHelper.mouseup).toHaveBeenCalled()
 
-    component.onMousemove(event)
+    component.onMousemove(event as MouseEvent)
     expect(component.mouseHelper).not.toBeNull()
     expect(component.mouseHelper.mousemove).toHaveBeenCalled()
   })
