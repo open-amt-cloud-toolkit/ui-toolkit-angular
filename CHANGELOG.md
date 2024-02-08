@@ -1,3 +1,62 @@
+<a name="7.2.4"></a>
+## [7.2.4] - 2024-02-08
+### Build
+- bump angular core, cdk and cli to 17.1.2 ([#1095](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1095)) (#2a13687) 
+- bump [@angular](https://github.com/angular)/core, cli, cdk and [@angular](https://github.com/angular)-eslint/schematics ([#1045](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1045)) (#8633de1) 
+- bump angular cli, cdk and core to 17.1.1 ([#1082](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1082)) (#849d71e) 
+- bump [@angular](https://github.com/angular)/core, cli and cdk to 17.1.0 ([#1058](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1058)) (#fa21d50) 
+- **deps:** bump codecov/codecov-action from 3.1.4 to 3.1.5 ([#1079](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1079)) (#d1de07c) 
+- **deps:** bump actions/setup-node from 4.0.1 to 4.0.2 ([#1102](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1102)) (#c6b5f55) 
+- **deps:** bump codecov/codecov-action from 4.0.0 to 4.0.1 ([#1097](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1097)) (#d53637c) 
+- **deps:** bump github/codeql-action from 3.23.2 to 3.24.0 ([#1098](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1098)) (#6270173) 
+- **deps:** bump actions/upload-artifact from 4.0.0 to 4.1.0 ([#1048](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1048)) (#1d435eb) 
+- **deps:** bump codecov/codecov-action from 3.1.5 to 4.0.0 ([#1093](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1093)) (#b6591d6) 
+- **deps:** bump actions/upload-artifact from 4.3.0 to 4.3.1 ([#1101](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1101)) (#69ba8c6) 
+- **deps:** bump actions/upload-artifact from 4.1.0 to 4.2.0 ([#1060](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1060)) (#ccb6d6f) 
+- **deps:** bump actions/dependency-review-action from 3.1.5 to 4.0.0 ([#1059](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1059)) (#44f6242) 
+- **deps:** bump actions/upload-artifact from 4.2.0 to 4.3.0 ([#1073](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1073)) (#77e9a33) 
+- **deps:** bump step-security/harden-runner from 2.6.1 to 2.7.0 ([#1094](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1094)) (#20d2f2a) 
+- **deps:** bump github/codeql-action from 3.23.0 to 3.23.1 ([#1053](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1053)) (#14b4e66) 
+- **deps:** bump github/codeql-action from 3.23.1 to 3.23.2 ([#1081](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1081)) (#77e3a77) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/eslint-plugin ([#1071](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1071)) (#c952a9d) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.5 to 20.11.7 ([#1080](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1080)) (#74e9340) 
+- **deps-dev:** bump ng-packagr from 17.1.1 to 17.1.2 ([#1074](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1074)) (#fd16654) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/template-parser ([#1069](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1069)) (#d7dccc7) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/builder from 17.2.0 to 17.2.1 ([#1070](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1070)) (#ec68dce) 
+- **deps-dev:** bump eslint-config-standard-with-typescript (#9fe83d9) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/schematics from 17.2.0 to 17.2.1 ([#1072](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1072)) (#c04ec12) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.7 to 20.11.10 ([#1085](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1085)) (#0647713) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/eslint-plugin ([#1064](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1064)) (#1fc97d6) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/eslint-plugin-template ([#1066](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1066)) (#f7b2c52) 
+- **deps-dev:** bump ng-packagr from 17.1.0 to 17.1.1 ([#1065](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1065)) (#1e2bcf7) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/parser from 6.19.0 to 6.19.1 ([#1067](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1067)) (#1b58baa) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/eslint-plugin ([#1084](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1084)) (#9989014) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/parser from 6.19.1 to 6.20.0 ([#1083](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1083)) (#015f8d4) 
+- **deps-dev:** bump typescript from 5.2.2 to 5.3.3 ([#1061](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1061)) (#e1fc82a) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.4 to 20.11.5 ([#1062](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1062)) (#ec993b3) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.14 to 20.11.16 ([#1096](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1096)) (#f8a5371) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/parser from 6.17.0 to 6.18.1 ([#1041](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1041)) (#dbc9fca) 
+- **deps-dev:** bump ng-packagr from 17.0.3 to 17.1.0 ([#1054](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1054)) (#bf416f7) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.3 to 20.11.4 ([#1052](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1052)) (#81a9c01) 
+- **deps-dev:** bump zone.js from 0.14.2 to 0.14.3 ([#1047](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1047)) (#3e594fb) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.10 to 20.11.14 ([#1092](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1092)) (#a593a70) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/eslint-plugin ([#1100](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1100)) (#0e08fe1) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.10.8 to 20.11.3 ([#1050](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1050)) (#6f49540) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/parser from 6.18.1 to 6.19.0 ([#1051](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1051)) (#068d18b) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/parser from 6.20.0 to 6.21.0 ([#1099](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1099)) (#1102a00) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.10.6 to 20.10.8 ([#1042](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1042)) (#3356328) 
+- **deps-dev:** bump [@typescript](https://github.com/typescript)-eslint/eslint-plugin ([#1049](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1049)) (#8ab25eb) 
+
+### Chore
+- update build tasks, package.json and changelog (#e9d4905) 
+
+### Ci
+- pin version of config [@commitlint](https://github.com/commitlint)/config-conventional to 18.5 (#362caa4) 
+- update package.json during release ([#1063](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1063)) (#0de5064) 
+
+### Refactor
+- reduce any types (#ebc0930) 
+
 <a name="7.2.3"></a>
 ## [7.2.3] - 2024-01-09
 ### Build
