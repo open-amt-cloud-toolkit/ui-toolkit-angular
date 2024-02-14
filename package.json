@@ -22,7 +22,7 @@
     "@open-amt-cloud-toolkit/ui-toolkit": "~3.2.2"
   },
   "devDependencies": {
-    "@angular/compiler": "^17.1.2",
+    "@angular/compiler": "^17.2.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.4",
