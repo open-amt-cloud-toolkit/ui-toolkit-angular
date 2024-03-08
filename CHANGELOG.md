@@ -1,3 +1,36 @@
+<a name="7.2.5"></a>
+## [7.2.5] - 2024-03-08
+### Build
+- bump [@angular](https://github.com/angular)/cli, cdk to 17.2.0 and core to 17.2.1 ([#1115](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1115)) (#7d2aff6) 
+- bump [@angular](https://github.com/angular)/cdk to 17.2.2, cli to 17.2.3 and core to 17.2.4 ([#1150](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1150)) (#2a1afbe) 
+- bump [@angular](https://github.com/angular)/cli to 17.2.2 and core to 17.2.3 ([#1141](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1141)) (#b781c5e) 
+- bump [@angular](https://github.com/angular)/cli, cdk and material to 17.2.1 and core to 17.2.2 ([#1129](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1129)) (#6b35f63) 
+- **deps:** bump github/codeql-action from 3.24.5 to 3.24.6 ([#1142](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1142)) (#3fe994d) 
+- **deps:** bump actions/dependency-review-action from 4.0.0 to 4.1.0 ([#1114](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1114)) (#ea70fd3) 
+- **deps:** bump github/codeql-action from 3.24.0 to 3.24.1 ([#1110](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1110)) (#5acac64) 
+- **deps:** bump actions/add-to-project from 0.5.0 to 0.6.0 ([#1130](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1130)) (#813ac83) 
+- **deps:** bump codecov/codecov-action from 4.0.2 to 4.1.0 ([#1131](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1131)) (#e701368) 
+- **deps:** bump actions/dependency-review-action from 4.1.0 to 4.1.3 ([#1120](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1120)) (#2c01193) 
+- **deps:** bump codecov/codecov-action from 4.0.1 to 4.0.2 ([#1128](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1128)) (#73d2e3c) 
+- **deps:** bump github/codeql-action from 3.24.3 to 3.24.5 ([#1127](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1127)) (#102e852) 
+- **deps:** bump github/codeql-action from 3.24.1 to 3.24.3 ([#1116](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1116)) (#873e72d) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.19 to 20.11.20 ([#1122](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1122)) (#d46b3fa) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.20 to 20.11.21 ([#1135](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1135)) (#1fc460c) 
+- **deps-dev:** bump eslint from 8.56.0 to 8.57.0 ([#1134](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1134)) (#60359f7) 
+- **deps-dev:** bump karma from 6.4.2 to 6.4.3 ([#1133](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1133)) (#3c3a530) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.17 to 20.11.19 ([#1117](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1117)) (#62f05df) 
+- **deps-dev:** bump ng-packagr from 17.1.2 to 17.2.0 ([#1118](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1118)) (#5ab2c82) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.21 to 20.11.22 ([#1139](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1139)) (#7c5e267) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.22 to 20.11.24 ([#1143](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1143)) (#df0a352) 
+- **deps-dev:** bump ng-packagr from 17.2.0 to 17.2.1 ([#1144](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1144)) (#5ec8b34) 
+- **deps-dev:** bump zone.js from 0.14.3 to 0.14.4 ([#1109](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1109)) (#064508b) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.24 to 20.11.25 ([#1146](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1146)) (#0569cb1) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.16 to 20.11.17 ([#1105](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1105)) (#b2cc4e3) 
+- **deps-dev:** bump jasmine-core from 5.1.1 to 5.1.2 ([#1106](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1106)) (#9e19e84) 
+
+### Chore
+- update build tasks, package.json and changelog (#ebe10dd) 
+
 ## [7.2.4](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.3...v7.2.4) (2024-02-08)
 
 <a name="7.2.4"></a>
