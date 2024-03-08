@@ -1,3 +1,5 @@
+## [7.2.5](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.4...v7.2.5) (2024-03-08)
+
 <a name="7.2.5"></a>
 ## [7.2.5] - 2024-03-08
 ### Build
