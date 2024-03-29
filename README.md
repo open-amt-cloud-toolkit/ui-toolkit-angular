@@ -1,10 +1,10 @@
 # Angular UI Components
 
-![CodeQL](https://img.shields.io/github/actions/workflow/status/open-amt-cloud-toolkit/ui-toolkit-angular/codeql-analysis.yml?style=for-the-badge&label=CodeQL)
-![Build](https://img.shields.io/github/actions/workflow/status/open-amt-cloud-toolkit/ui-toolkit-angular/ci.yml?style=for-the-badge)
-![Codecov](https://img.shields.io/codecov/c/github/open-amt-cloud-toolkit/ui-toolkit-angular?style=for-the-badge)
-![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/open-amt-cloud-toolkit/ui-toolkit-angular?style=for-the-badge&label=OSSF%20Score)
-![Discord](https://img.shields.io/discord/1063200098680582154?style=for-the-badge&label=Discord)
+![CodeQL](https://img.shields.io/github/actions/workflow/status/open-amt-cloud-toolkit/ui-toolkit-angular/codeql-analysis.yml?style=for-the-badge&label=CodeQL&logo=github)
+![Build](https://img.shields.io/github/actions/workflow/status/open-amt-cloud-toolkit/ui-toolkit-angular/ci.yml?style=for-the-badge&logo=github)
+![Codecov](https://img.shields.io/codecov/c/github/open-amt-cloud-toolkit/ui-toolkit-angular?style=for-the-badge&logo=codecov)
+[![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/open-amt-cloud-toolkit/ui-toolkit-angular?style=for-the-badge&label=OSSF%20Score)](https://api.securityscorecards.dev/projects/github.com/open-amt-cloud-toolkit/ui-toolkit-angular)
+[![Discord](https://img.shields.io/discord/1063200098680582154?style=for-the-badge&label=Discord&logo=discord&logoColor=white&labelColor=%235865F2&link=https%3A%2F%2Fdiscord.gg%2FqmTWWFyA)](https://discord.gg/qmTWWFyA)
 
 ## Prerequisites
 
