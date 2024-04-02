@@ -1,3 +1,44 @@
+<a name="7.2.6"></a>
+## [7.2.6] - 2024-04-02
+### Build
+- bump [@angular](https://github.com/angular)/cli and [@angular](https://github.com/angular)/core to 17.3.0 ([#1160](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1160)) (#e7be561) 
+- bump [@angular](https://github.com/angular)/cdk, core to 17.3.1 and [@angular](https://github.com/angular)/cli to 17.3.2 ([#1185](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1185)) (#ca62514) 
+- bump [@angular](https://github.com/angular)/cdk and [@angular](https://github.com/angular)/core to 17.3.2 (#78ac0e6) 
+- **deps:** bump actions/add-to-project from 0.6.0 to 0.6.1 ([#1171](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1171)) (#7968090) 
+- **deps:** bump github/codeql-action from 3.24.6 to 3.24.7 ([#1155](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1155)) (#d97bc3f) 
+- **deps:** bump actions/checkout from 4.1.1 to 4.1.2 ([#1154](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1154)) (#e4fc887) 
+- **deps:** bump actions/dependency-review-action from 4.2.4 to 4.2.5 ([#1190](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1190)) (#1a6d627) 
+- **deps:** bump codecov/codecov-action from 4.1.0 to 4.1.1 ([#1191](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1191)) (#93d3f87) 
+- **deps:** bump actions/add-to-project from 0.6.1 to 1.0.0 ([#1192](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1192)) (#6bdad3e) 
+- **deps:** bump wagoid/commitlint-github-action from 5.4.5 to 6.0.0 ([#1199](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1199)) (#90dd795) 
+- **deps:** bump github/codeql-action from 3.24.7 to 3.24.8 ([#1170](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1170)) (#2ad7c88) 
+- **deps:** bump cycjimmy/semantic-release-action from 4.0.0 to 4.1.0 ([#1172](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1172)) (#9d79244) 
+- **deps:** bump actions/dependency-review-action from 4.1.3 to 4.2.4 ([#1182](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1182)) (#cc4f048) 
+- **deps:** bump github/codeql-action from 3.24.8 to 3.24.9 ([#1181](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1181)) (#21f661d) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.30 to 20.12.2 ([#1202](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1202)) (#ad7fa4a) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/builder from 17.2.1 to 17.3.0 ([#1166](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1166)) (#70ad51b) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/schematics from 17.2.1 to 17.3.0 ([#1164](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1164)) (#aa2973f) 
+- **deps-dev:** bump [@angular](https://github.com/angular)/cdk from 17.2.2 to 17.3.0 ([#1163](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1163)) (#7fcf903) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/eslint-plugin ([#1169](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1169)) (#c121541) 
+- **deps-dev:** bump webpack-dev-middleware from 5.3.3 to 5.3.4 ([#1180](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1180)) (#d61d092) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.28 to 20.11.30 ([#1179](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1179)) (#1a7f8b8) 
+- **deps-dev:** bump follow-redirects from 1.15.5 to 1.15.6 ([#1167](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1167)) (#01c0150) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.26 to 20.11.28 ([#1165](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1165)) (#e035de3) 
+- **deps-dev:** bump typescript from 5.3.3 to 5.4.2 ([#1161](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1161)) (#658b098) 
+- **deps-dev:** bump typescript from 5.4.2 to 5.4.3 ([#1187](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1187)) (#3ac10cf) 
+- **deps-dev:** bump ng-packagr from 17.2.1 to 17.3.0 ([#1159](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1159)) (#428dc2d) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/template-parser ([#1189](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1189)) (#87edad9) 
+- **deps-dev:** bump [@angular](https://github.com/angular)-eslint/eslint-plugin-template ([#1186](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1186)) (#fab80fc) 
+- **deps-dev:** bump [@types](https://github.com/types)/node from 20.11.25 to 20.11.26 (#c9386a1) 
+
+### Chore
+- update build tasks, package.json and changelog (#272cfd8) 
+- update build tasks, package.json and changelog ([#1204](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1204)) (#75eee41) 
+
+### Docs
+- update badge links (#981a0f2) 
+- update badge styles ([#1193](https://github.com/open-amt-cloud-toolkit/ui-toolkit/issues/1193)) (#22a1e43) 
+
 ## [7.2.5](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.4...v7.2.5) (2024-03-08)
 
 <a name="7.2.5"></a>
