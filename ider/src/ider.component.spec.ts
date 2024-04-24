@@ -25,11 +25,6 @@ describe('IderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
-    expect(component.ider).toBeInstanceOf(AMTIDER)
-    expect(component.redirector).toBeInstanceOf(AMTRedirector)
-    expect(component.mpsServer).toEqual('')
-    expect(component.deviceId).toEqual('')
-    expect(component.authToken).toEqual('')
   })
 
   it('should correctly instantiate redirector and ider', () => {
@@ -41,6 +36,10 @@ describe('IderComponent', () => {
 
     expect(component.redirector).toBeTruthy()
     expect(component.ider).toBeTruthy()
+
+    expect(component.ider).toBeInstanceOf(AMTIDER)
+    expect(component.redirector).toBeInstanceOf(AMTRedirector)
+
     expect(component.redirector?.server).toEqual('testServer')
     expect(component.redirector?.authToken).toEqual('testToken')
     expect(component.redirector?.host).toEqual('testDeviceId')
@@ -64,14 +63,9 @@ describe('IderComponent', () => {
     expect(component.stopIder).toHaveBeenCalled()
   })
 
-  it('should call instantiate in ngAfterViewInit', () => {
-    spyOn(component, 'instantiate')
-    component.ngAfterViewInit()
-    expect(component.instantiate).toHaveBeenCalled()
-  })
-
   it('should emit updated iderData', () => {
     spyOn(component.iderData, 'emit')
+    component.instantiate()
     component.iderSectorStats(1, 0, 0, 0, 2)
     expect(component.iderData.emit).toHaveBeenCalled()
   })
@@ -79,7 +73,7 @@ describe('IderComponent', () => {
   it('should stop ider', () => {
     const redirectorSpy = spyOn(AMTRedirector.prototype, 'stop')
     const cleanupSpy = spyOn(component, 'cleanup')
-
+    component.instantiate()
     component.stopIder()
 
     expect(component.ider).not.toBeNull()
@@ -90,6 +84,7 @@ describe('IderComponent', () => {
 
   it('should stop ider on destroy', () => {
     const stopSpy = spyOn(AMTIDER.prototype, 'stop')
+    component.instantiate()
     component.ngOnDestroy()
     expect(stopSpy).toHaveBeenCalled()
   })

@@ -39,10 +39,6 @@ export class IderComponent {
     })
   }
 
-  ngAfterViewInit (): void {
-    this.init()
-  }
-
   init (): void {
     this.instantiate()
     setTimeout(() => {
