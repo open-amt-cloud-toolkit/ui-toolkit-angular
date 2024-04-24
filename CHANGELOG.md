@@ -1,3 +1,10 @@
+## [7.2.7](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.6...v7.2.7) (2024-04-24)
+
+
+### Bug Fixes
+
+* invalid subprotocol during IDER connection ([#1246](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/issues/1246)) ([08c7d1e](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/08c7d1e5053a31d92a3eb6accb8b1e2314a3a43a))
+
 ## [7.2.6](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.5...v7.2.6) (2024-04-02)
 
 <a name="7.2.6"></a>
