@@ -1,7 +1,7 @@
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AMTRedirector, AmtTerminal } from '@open-amt-cloud-toolkit/ui-toolkit/core'
-import { Terminal } from 'xterm'
+import { Terminal } from '@xterm/xterm'
 
 import { SolComponent } from './sol.component'
 

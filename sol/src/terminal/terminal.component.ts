@@ -4,7 +4,7 @@
  **********************************************************************/
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core'
 import { C, V } from '@angular/cdk/keycodes'
-import { Terminal } from 'xterm'
+import { Terminal } from '@xterm/xterm'
 @Component({
   selector: 'amt-terminal',
   templateUrl: './terminal.component.html'
