@@ -1,3 +1,20 @@
+# [8.0.0](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.7...v8.0.0) (2024-06-05)
+
+
+### Build System
+
+* bump angular to 18 ([c1a9f40](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/c1a9f40f12ba8c3a35817a915cacee59230b79cd))
+
+
+### BREAKING CHANGES
+
+* Converting to Standalone Components for KVM, IDER, and SOL.
+As such, standalone requires Angular 17 or newer.
+    - Renamed KvmComponent to KVMComponent
+    - Renamed SolComponent to SOLComponent
+    - Renamed IderComponent to IDER Component
+    - Fixed backwards compatible support to Angular 17
+
 ## [7.2.7](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.6...v7.2.7) (2024-04-24)
 
 
