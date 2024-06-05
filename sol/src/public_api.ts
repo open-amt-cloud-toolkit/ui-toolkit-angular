@@ -7,4 +7,3 @@
  */
 
 export * from './sol.component'
-export * from './sol.module'

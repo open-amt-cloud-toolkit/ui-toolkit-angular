@@ -3,4 +3,3 @@
  */
 
 export * from './ider.component'
-export * from './ider.module'
