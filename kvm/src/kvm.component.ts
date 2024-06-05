@@ -29,9 +29,10 @@ import { throttleTime } from 'rxjs/operators'
 @Component({
   selector: 'amt-kvm',
   templateUrl: './kvm.component.html',
-  styleUrls: ['./kvm.component.css']
+  styleUrls: ['./kvm.component.css'],
+  standalone: true
 })
-export class KvmComponent implements OnInit, AfterViewInit, OnDestroy {
+export class KVMComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas', { static: false }) canvas: ElementRef | undefined
   @ViewChild('device', { static: false }) device: string
   public context!: CanvasRenderingContext2D

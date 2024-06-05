@@ -5,14 +5,17 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, OnDestroy, Input, AfterViewInit } from '@angular/core'
 import { Terminal } from '@xterm/xterm'
 import { AmtTerminal, AMTRedirector, TerminalDataProcessor, RedirectorConfig, Protocol } from '@open-amt-cloud-toolkit/ui-toolkit/core'
+import { TerminalComponent } from './terminal/terminal.component'
 
 @Component({
   selector: 'amt-sol',
   templateUrl: './sol.component.html',
   styleUrls: ['./sol.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [TerminalComponent]
 })
-export class SolComponent implements OnInit, OnDestroy, AfterViewInit {
+export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
   terminal: AmtTerminal
   container!: any
   term: Terminal

@@ -4,30 +4,28 @@
  **********************************************************************/
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
 
-import { KvmComponent } from './kvm.component'
-import { RouterTestingModule } from '@angular/router/testing'
+import { KVMComponent } from './kvm.component'
 import { AMTDesktop, AMTRedirector, DataProcessor, KeyBoardHelper, MouseHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 describe('KvmComponent', () => {
-  let component: KvmComponent
-  let fixture: ComponentFixture<KvmComponent>
+  let component: KVMComponent
+  let fixture: ComponentFixture<KVMComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [KvmComponent],
-      imports: [RouterTestingModule]
+      imports: [KVMComponent]
     })
       .compileComponents()
   })
 
   const setup = (): void => {
-    fixture = TestBed.createComponent(KvmComponent)
+    fixture = TestBed.createComponent(KVMComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   }
 
   const asyncSetup = fakeAsync(() => {
-    fixture = TestBed.createComponent(KvmComponent)
+    fixture = TestBed.createComponent(KVMComponent)
     component = fixture.componentInstance
     component.mpsServer = 'wss://localhost'
     component.authToken = 'authToken'
