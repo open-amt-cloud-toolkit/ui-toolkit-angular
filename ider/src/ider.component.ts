@@ -11,9 +11,10 @@ export interface IDERData {
 @Component({
   selector: 'amt-ider',
   template: '',
-  styles: []
+  styles: [],
+  standalone: true
 })
-export class IderComponent {
+export class IDERComponent {
   redirector: AMTRedirector | null
   ider: AMTIDER | null
   data: IDERData | null

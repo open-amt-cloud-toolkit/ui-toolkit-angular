@@ -7,8 +7,5 @@
  */
 
 export * from './sol/src/sol.component'
-export * from './sol/src/sol.module'
 export * from './kvm/src/kvm.component'
-export * from './kvm/src/kvm.module'
 export * from './ider/src/ider.component'
-export * from './ider/src/ider.module'

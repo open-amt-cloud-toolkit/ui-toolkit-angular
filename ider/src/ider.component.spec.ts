@@ -1,24 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { IderComponent } from './ider.component'
+import { IDERComponent } from './ider.component'
 import { AMTRedirector, AMTIDER } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 describe('IderComponent', () => {
-  let component: IderComponent
-  let fixture: ComponentFixture<IderComponent>
+  let component: IDERComponent
+  let fixture: ComponentFixture<IDERComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IderComponent],
+      imports: [IDERComponent],
       providers: [{
         provide: 'userInput',
         useValue: {
           mpsServer: 'https://localhost/mps'
         }
       }]
-
     })
       .compileComponents()
-    fixture = TestBed.createComponent(IderComponent)
+    fixture = TestBed.createComponent(IDERComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

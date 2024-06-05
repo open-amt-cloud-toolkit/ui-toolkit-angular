@@ -7,7 +7,8 @@ import { C, V } from '@angular/cdk/keycodes'
 import { Terminal } from '@xterm/xterm'
 @Component({
   selector: 'amt-terminal',
-  templateUrl: './terminal.component.html'
+  templateUrl: './terminal.component.html',
+  standalone: true
 })
 
 export class TerminalComponent implements OnInit {

@@ -7,4 +7,3 @@
  */
 
 export * from './kvm.component'
-export * from './kvm.module'

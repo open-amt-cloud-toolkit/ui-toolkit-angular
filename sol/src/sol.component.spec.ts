@@ -1,37 +1,34 @@
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
-import { RouterTestingModule } from '@angular/router/testing'
 import { AMTRedirector, AmtTerminal } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 import { Terminal } from '@xterm/xterm'
 
-import { SolComponent } from './sol.component'
+import { SOLComponent } from './sol.component'
 
 describe('SolComponent', () => {
-  let component: SolComponent
-  let fixture: ComponentFixture<SolComponent>
+  let component: SOLComponent
+  let fixture: ComponentFixture<SOLComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SolComponent],
-      imports: [RouterTestingModule],
+      imports: [SOLComponent],
       providers: [{
         provide: 'userInput',
         useValue: {
           mpsServer: 'https://localhost/mps'
         }
       }]
-
     })
       .compileComponents()
   })
 
   const setup = (): void => {
-    fixture = TestBed.createComponent(SolComponent)
+    fixture = TestBed.createComponent(SOLComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   }
 
   const asyncSetup = fakeAsync(() => {
-    fixture = TestBed.createComponent(SolComponent)
+    fixture = TestBed.createComponent(SOLComponent)
     component = fixture.componentInstance
     component.mpsServer = 'wss://localhost'
     component.authToken = 'authToken'
