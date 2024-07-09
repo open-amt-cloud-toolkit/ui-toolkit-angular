@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core'
 import { AMTRedirector, Protocol, AMTIDER, RedirectorConfig } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 export interface IDERData {
@@ -14,7 +14,7 @@ export interface IDERData {
   styles: [],
   standalone: true
 })
-export class IDERComponent {
+export class IDERComponent implements OnInit, OnDestroy {
   redirector: AMTRedirector | null
   ider: AMTIDER | null
   data: IDERData | null
@@ -30,7 +30,7 @@ export class IDERComponent {
   @Input() public authToken = ''
   @Input() public deviceId = ''
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
         this.init()
@@ -40,20 +40,20 @@ export class IDERComponent {
     })
   }
 
-  init (): void {
+  init(): void {
     this.instantiate()
     setTimeout(() => {
       this.startIder()
     }, 4000)
   }
 
-  startIder (): void {
+  startIder(): void {
     if (this.redirector != null) {
       this.redirector.start(WebSocket)
     }
   }
 
-  instantiate (): void {
+  instantiate(): void {
     const config: RedirectorConfig = {
       mode: 'ider',
       protocol: Protocol.IDER,
@@ -75,20 +75,24 @@ export class IDERComponent {
     this.ider.sectorStats = this.iderSectorStats.bind(this)
   }
 
-  iderSectorStats (mode: number, dev: number, total: number, start: number, len: number): void {
+  iderSectorStats(mode: number, dev: number, total: number, start: number, len: number): void {
     if (this.ider == null) {
       return
     }
     if (mode === 1) {
-      if (dev === 0) { // Floppy
+      if (dev === 0) {
+        // Floppy
         this.ider.floppyRead += len * 512
-      } else { // CD-ROM
+      } else {
+        // CD-ROM
         this.ider.cdromRead += len * 2048
       }
     } else {
-      if (dev === 0) { // Floppy
+      if (dev === 0) {
+        // Floppy
         this.ider.floppyWrite += len * 512
-      } else { // CD-ROM
+      } else {
+        // CD-ROM
         this.ider.cdromWrite += len * 2048
       }
     }
@@ -104,19 +108,19 @@ export class IDERComponent {
     this.deviceStatus.emit(state)
   }
 
-  stopIder (): void {
+  stopIder(): void {
     if (this.redirector !== null) {
       this.redirector.stop()
       this.cleanup()
     }
   }
 
-  cleanup (): void {
-    (this.redirector) = null;
-    (this.ider) = null
+  cleanup(): void {
+    this.redirector = null
+    this.ider = null
   }
 
-  ngOnDestroy (): void {
+  ngOnDestroy(): void {
     if (this.ider != null) {
       this.ider.stop()
     }

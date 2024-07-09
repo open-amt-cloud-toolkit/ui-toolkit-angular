@@ -5,7 +5,13 @@
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
 
 import { KVMComponent } from './kvm.component'
-import { AMTDesktop, AMTRedirector, DataProcessor, KeyBoardHelper, MouseHelper } from '@open-amt-cloud-toolkit/ui-toolkit/core'
+import {
+  AMTDesktop,
+  AMTRedirector,
+  DataProcessor,
+  KeyBoardHelper,
+  MouseHelper
+} from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 describe('KvmComponent', () => {
   let component: KVMComponent
@@ -14,8 +20,7 @@ describe('KvmComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [KVMComponent]
-    })
-      .compileComponents()
+    }).compileComponents()
   })
 
   const setup = (): void => {

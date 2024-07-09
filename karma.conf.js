@@ -31,12 +31,16 @@ module.exports = function (config) {
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
-        { type: 'lcov' }
-      ]
+        { type: 'lcov' }]
     },
-    reporters: ['progress', 'coverage', 'junit', 'kjhtml'],
+    reporters: [
+      'progress',
+      'coverage',
+      'junit',
+      'kjhtml'
+    ],
     junitReporter: {
-      outputFile: 'ui-toolkit-angular.xml',
+      outputFile: 'ui-toolkit-angular.xml'
     },
     port: 9876,
     colors: true,
@@ -51,6 +55,5 @@ module.exports = function (config) {
     },
     singleRun: false,
     restartOnFileChange: true
-
   })
 }

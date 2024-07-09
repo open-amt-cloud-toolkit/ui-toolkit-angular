@@ -10,12 +10,11 @@ import { Terminal } from '@xterm/xterm'
   templateUrl: './terminal.component.html',
   standalone: true
 })
-
 export class TerminalComponent implements OnInit {
   @Input() term: Terminal
   @Output() handleKeyPress: EventEmitter<any> = new EventEmitter<any>()
   container!: HTMLElement | null
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.container = document.getElementById('terminal')
     if (this.container == null) throw new Error('Container not found')
     this.term.open(this.container)
@@ -31,19 +30,24 @@ export class TerminalComponent implements OnInit {
       if (e.type === 'keydown') {
         if (e.ctrlKey && e.shiftKey && e.keyCode === C) {
           e.preventDefault()
-          navigator.clipboard.writeText(this.term.getSelection()).then(() => {
-
-          }).catch(err => {
-            console.error('Failed to copy to clipboard', err)
-          })
+          navigator.clipboard
+            .writeText(this.term.getSelection())
+            .then(() => {})
+            .catch((err) => {
+              console.error('Failed to copy to clipboard', err)
+            })
         } else if (e.ctrlKey && e.shiftKey && e.keyCode === V) {
           e.preventDefault()
-          navigator.clipboard.readText().then(text => {
-            this.handleKeyPress.emit(text)
-          }).catch(err => {
-            console.error('Failed to read clipboard', err)
-          })
-        } else if (e.code === 'Space') { // or e.keyCode === SPACE
+          navigator.clipboard
+            .readText()
+            .then((text) => {
+              this.handleKeyPress.emit(text)
+            })
+            .catch((err) => {
+              console.error('Failed to read clipboard', err)
+            })
+        } else if (e.code === 'Space') {
+          // or e.keyCode === SPACE
           e.preventDefault()
           this.handleKeyPress.emit(e.key)
         }

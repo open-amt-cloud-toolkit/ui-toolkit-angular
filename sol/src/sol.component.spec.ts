@@ -11,14 +11,15 @@ describe('SolComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SOLComponent],
-      providers: [{
-        provide: 'userInput',
-        useValue: {
-          mpsServer: 'https://localhost/mps'
+      providers: [
+        {
+          provide: 'userInput',
+          useValue: {
+            mpsServer: 'https://localhost/mps'
+          }
         }
-      }]
-    })
-      .compileComponents()
+      ]
+    }).compileComponents()
   })
 
   const setup = (): void => {

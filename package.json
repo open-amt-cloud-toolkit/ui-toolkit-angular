@@ -13,19 +13,19 @@
     "test": "ng test",
     "test-ci": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
+    "prettify": "npx prettier --write .",
+    "ci-prettify": "npx prettier --check .",
     "e2e": "ng e2e"
   },
   "peerDependencies": {
-    "@open-amt-cloud-toolkit/ui-toolkit": "~3.2.6",
+    "@open-amt-cloud-toolkit/ui-toolkit": "~3.2.7",
     "@xterm/xterm": "^5.5.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.7",
     "@angular-eslint/builder": "^18.1.0",
     "@angular-eslint/eslint-plugin": "^18.1.0",
-    "@angular-eslint/eslint-plugin-template": "^18.1.0",
     "@angular-eslint/schematics": "^18.1.0",
-    "@angular-eslint/template-parser": "^18.1.0",
     "@angular/cdk": "^18.0.6",
     "@angular/cli": "^18.0.7",
     "@angular/common": "^18.0.6",
@@ -35,11 +35,10 @@
     "@angular/platform-browser": "^18.0.6",
     "@angular/platform-browser-dynamic": "^18.0.6",
     "@types/jasmine": "~5.1.4",
-    "@types/node": "^20.14.10",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
-    "@typescript-eslint/parser": "^6.4.0",
+    "@types/node": "^20.14.9",
+    "angular-eslint": "18.0.1",
     "eslint": "^8.57.0",
-    "eslint-config-love": "^43.1.0",
+    "eslint-config-prettier": "^9.1.0",
     "jasmine-core": "~5.1.2",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.3",
@@ -48,11 +47,14 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "karma-junit-reporter": "^2.0.1",
+    "prettier-config-standard": "^7.0.0",
+    "prettier-plugin-multiline-arrays": "^3.0.6",
     "rxjs": "~7.8.1",
     "ts-node": "~10.9.2",
     "tslib": "^2.6.2",
     "ng-packagr": "^18.0.0",
     "zone.js": "~0.14.7",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "typescript-eslint": "8.0.0-alpha.20"
   }
 }
