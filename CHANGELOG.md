@@ -1,3 +1,5 @@
+## [8.0.2](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.1...v8.0.2) (2024-07-11)
+
 ## [8.0.1](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.0...v8.0.1) (2024-06-05)
 
 # [8.0.0](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.7...v8.0.0) (2024-06-05)
