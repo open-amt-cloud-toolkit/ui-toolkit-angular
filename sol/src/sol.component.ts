@@ -2,9 +2,24 @@
  * Copyright (c) Intel Corporation 2023
  * SPDX-License-Identifier: Apache-2.0
  **********************************************************************/
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation, OnDestroy, Input, AfterViewInit } from '@angular/core'
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+  OnDestroy,
+  Input,
+  AfterViewInit
+} from '@angular/core'
 import { Terminal } from '@xterm/xterm'
-import { AmtTerminal, AMTRedirector, TerminalDataProcessor, RedirectorConfig, Protocol } from '@open-amt-cloud-toolkit/ui-toolkit/core'
+import {
+  AmtTerminal,
+  AMTRedirector,
+  TerminalDataProcessor,
+  RedirectorConfig,
+  Protocol
+} from '@open-amt-cloud-toolkit/ui-toolkit/core'
 import { TerminalComponent } from './terminal/terminal.component'
 
 @Component({
@@ -28,7 +43,7 @@ export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() public authToken = ''
   @Input() public deviceId = ''
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     this.deviceConnection.subscribe((data: boolean) => {
       if (data) {
         this.init()
@@ -38,18 +53,18 @@ export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  ngAfterViewInit (): void {
+  ngAfterViewInit(): void {
     this.init()
   }
 
-  init (): void {
+  init(): void {
     this.instantiate()
     setTimeout(() => {
       this.startSol()
     }, 4000)
   }
 
-  instantiate (): void {
+  instantiate(): void {
     this.terminal = new AmtTerminal()
     this.dataProcessor = new TerminalDataProcessor(this.terminal)
     const config: RedirectorConfig = {
@@ -80,30 +95,30 @@ export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  handleKeyPress (domEvent: any): void {
+  handleKeyPress(domEvent: any): void {
     this.terminal?.TermSendKeys(domEvent)
   }
 
-  handleClearTerminal (): void {
+  handleClearTerminal(): void {
     this.term?.reset()
   }
 
-  handleWriteToXterm (str: string): void {
+  handleWriteToXterm(str: string): void {
     this.term?.write(str)
   }
 
-  onTerminalStateChange (redirector: AMTRedirector, state: number): void {
+  onTerminalStateChange(redirector: AMTRedirector, state: number): void {
     this.deviceStatus.emit(state)
     this.deviceState = state
   }
 
-  startSol (): void {
+  startSol(): void {
     if (this.redirector !== null) {
       this.redirector.start(WebSocket)
     }
   }
 
-  stopSol (): void {
+  stopSol(): void {
     if (this.redirector !== null) {
       this.redirector.stop()
       this.handleClearTerminal()
@@ -112,14 +127,14 @@ export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  cleanup (): void {
-    (this.terminal as any) = null;
-    (this.redirector as any) = null;
-    (this.dataProcessor as any) = null;
-    (this.term as any) = null
+  cleanup(): void {
+    ;(this.terminal as any) = null
+    ;(this.redirector as any) = null
+    ;(this.dataProcessor as any) = null
+    ;(this.term as any) = null
   }
 
-  ngOnDestroy (): void {
+  ngOnDestroy(): void {
     this.stopSol()
   }
 }

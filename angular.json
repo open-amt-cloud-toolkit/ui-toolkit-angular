@@ -5,7 +5,7 @@
   },
   "version": 1,
   "projects": {
-    "ui-toolkit-angular":{
+    "ui-toolkit-angular": {
       "projectType": "library",
       "root": ".",
       "sourceRoot": "",
@@ -36,10 +36,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "**/*.ts",
-              "**/*.html"
-            ]
+            "lintFilePatterns": ["**/*.ts", "**/*.html"]
           }
         }
       }

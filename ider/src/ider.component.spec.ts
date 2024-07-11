@@ -9,14 +9,15 @@ describe('IderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [IDERComponent],
-      providers: [{
-        provide: 'userInput',
-        useValue: {
-          mpsServer: 'https://localhost/mps'
+      providers: [
+        {
+          provide: 'userInput',
+          useValue: {
+            mpsServer: 'https://localhost/mps'
+          }
         }
-      }]
-    })
-      .compileComponents()
+      ]
+    }).compileComponents()
     fixture = TestBed.createComponent(IDERComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
