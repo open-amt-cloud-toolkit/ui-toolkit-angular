@@ -55,6 +55,6 @@
     "ng-packagr": "^18.1.0",
     "zone.js": "~0.14.7",
     "typescript": "^5.4.0",
-    "typescript-eslint": "8.0.0-alpha.20"
+    "typescript-eslint": "8.0.0-alpha.44"
   }
 }
