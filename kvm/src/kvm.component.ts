@@ -109,7 +109,7 @@ export class KVMComponent implements OnInit, AfterViewInit, OnDestroy {
     this.module.onSend = this.redirector.send.bind(this.redirector)
     this.module.onProcessData = this.dataProcessor.processData.bind(this.dataProcessor)
     this.module.bpp = this.selected
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
     this.mouseMove = fromEvent(this.canvas?.nativeElement, 'mousemove')
     this.mouseMove.pipe(throttleTime(200)).subscribe((event: MouseEvent) => {
       if (this.mouseHelper != null) {
