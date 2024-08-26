@@ -37,7 +37,7 @@
     "@types/jasmine": "~5.1.4",
     "@types/node": "^22.5.0",
     "angular-eslint": "18.3.0",
-    "eslint": "^9.9.0",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "jasmine-core": "~5.2.0",
     "jasmine-spec-reporter": "~7.0.0",
