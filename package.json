@@ -51,7 +51,7 @@
     "prettier-plugin-multiline-arrays": "^3.0.6",
     "rxjs": "~7.8.1",
     "ts-node": "~10.9.2",
-    "tslib": "^2.6.2",
+    "tslib": "^2.7.0",
     "ng-packagr": "^18.2.1",
     "zone.js": "~0.14.10",
     "typescript": "^5.5.4",
