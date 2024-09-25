@@ -1,3 +1,10 @@
+## [8.0.4](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.3...v8.0.4) (2024-09-25)
+
+
+### Bug Fixes
+
+* **sol:** emits data now onKey ([#1521](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/issues/1521)) ([cfc5032](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/cfc5032ed66ffc4830b5cfafb865a2cdeb0981ed))
+
 ## [8.0.3](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.2...v8.0.3) (2024-08-12)
 
 ## [8.0.2](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.1...v8.0.2) (2024-07-11)
