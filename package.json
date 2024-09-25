@@ -35,9 +35,9 @@
     "@angular/platform-browser": "^18.2.5",
     "@angular/platform-browser-dynamic": "^18.2.5",
     "@types/jasmine": "~5.1.4",
-    "@types/node": "^22.5.5",
+    "@types/node": "^22.7.1",
     "angular-eslint": "18.3.1",
-    "eslint": "^9.11.0",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "jasmine-core": "~5.3.0",
     "jasmine-spec-reporter": "~7.0.0",
@@ -55,6 +55,6 @@
     "ng-packagr": "^18.2.1",
     "zone.js": "~0.14.10",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.6.0"
+    "typescript-eslint": "^8.7.0"
   }
 }
