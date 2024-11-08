@@ -1,6 +1,6 @@
 {
   "name": "@open-amt-cloud-toolkit/ui-toolkit-angular",
-  "version": "8.0.3",
+  "version": "8.0.5",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/issues"
@@ -18,7 +18,7 @@
     "e2e": "ng e2e"
   },
   "peerDependencies": {
-    "@open-amt-cloud-toolkit/ui-toolkit": "~3.2.8",
+    "@open-amt-cloud-toolkit/ui-toolkit": "~3.2.9",
     "@xterm/xterm": "^5.5.0"
   },
   "devDependencies": {
