@@ -4,13 +4,13 @@
  **********************************************************************/
 import {
   Component,
-  EventEmitter,
   OnInit,
-  Output,
   ViewEncapsulation,
   OnDestroy,
-  Input,
-  AfterViewInit
+  AfterViewInit,
+  input,
+  output,
+  EventEmitter
 } from '@angular/core'
 import { Terminal } from '@xterm/xterm'
 import {
@@ -27,7 +27,6 @@ import { TerminalComponent } from './terminal/terminal.component'
   templateUrl: './sol.component.html',
   styleUrls: ['./sol.component.css'],
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [TerminalComponent]
 })
 export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -37,14 +36,14 @@ export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
   redirector: AMTRedirector
   dataProcessor: TerminalDataProcessor
   deviceState = 0
-  @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
-  @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
-  @Input() public mpsServer = ''
-  @Input() public authToken = ''
-  @Input() public deviceId = ''
+  readonly deviceStatus = output<number>()
+  readonly deviceConnection = input<EventEmitter<boolean>>(new EventEmitter<boolean>())
+  public mpsServer = input('')
+  public authToken = input('')
+  public deviceId = input('')
 
   ngOnInit(): void {
-    this.deviceConnection.subscribe((data: boolean) => {
+    this.deviceConnection().subscribe((data: boolean) => {
       if (data) {
         this.init()
       } else {
@@ -71,14 +70,14 @@ export class SOLComponent implements OnInit, OnDestroy, AfterViewInit {
       mode: 'sol',
       protocol: Protocol.SOL,
       fr: new FileReader(),
-      host: this.deviceId,
+      host: this.deviceId(),
       port: 16994,
       user: '',
       pass: '',
       tls: 0,
       tls1only: 0,
-      authToken: this.authToken,
-      server: this.mpsServer
+      authToken: this.authToken(),
+      server: this.mpsServer()
     }
     this.redirector = new AMTRedirector(config)
     this.terminal.onSend = this.redirector.send.bind(this.redirector)

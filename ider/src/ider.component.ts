@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core'
+import { EventEmitter, Component, OnInit, OnDestroy, input, output } from '@angular/core'
 import { AMTRedirector, Protocol, AMTIDER, RedirectorConfig } from '@open-amt-cloud-toolkit/ui-toolkit/core'
 
 export interface IDERData {
@@ -11,8 +11,7 @@ export interface IDERData {
 @Component({
   selector: 'amt-ider',
   template: '',
-  styles: [],
-  standalone: true
+  styles: []
 })
 export class IDERComponent implements OnInit, OnDestroy {
   redirector: AMTRedirector | null
@@ -20,18 +19,18 @@ export class IDERComponent implements OnInit, OnDestroy {
   data: IDERData | null
   deviceState = 0
 
-  @Output() deviceStatus: EventEmitter<number> = new EventEmitter<number>()
-  @Output() iderData: EventEmitter<IDERData> = new EventEmitter<IDERData>()
+  readonly deviceStatus = output<number>()
+  readonly iderData = output<IDERData>()
 
-  @Input() deviceConnection: EventEmitter<boolean> = new EventEmitter<boolean>()
-  @Input() public cdrom: File | null = null
-  @Input() public floppy: File | null = null
-  @Input() public mpsServer = ''
-  @Input() public authToken = ''
-  @Input() public deviceId = ''
+  readonly deviceConnection = input<EventEmitter<boolean>>(new EventEmitter<boolean>())
+  public readonly cdrom = input<File | null>(null)
+  public readonly floppy = input<File | null>(null)
+  public mpsServer = input('')
+  public authToken = input('')
+  public deviceId = input('')
 
   ngOnInit(): void {
-    this.deviceConnection.subscribe((data: boolean) => {
+    this.deviceConnection().subscribe((data: boolean) => {
       if (data) {
         this.init()
       } else {
@@ -58,17 +57,17 @@ export class IDERComponent implements OnInit, OnDestroy {
       mode: 'ider',
       protocol: Protocol.IDER,
       fr: new FileReader(),
-      host: this.deviceId,
+      host: this.deviceId(),
       port: 16994,
       user: '',
       pass: '',
       tls: 0,
       tls1only: 0,
-      authToken: this.authToken,
-      server: this.mpsServer
+      authToken: this.authToken(),
+      server: this.mpsServer()
     }
     this.redirector = new AMTRedirector(config)
-    this.ider = new AMTIDER(this.redirector, this.cdrom, this.floppy)
+    this.ider = new AMTIDER(this.redirector, this.cdrom(), this.floppy())
     this.redirector.onNewState = this.ider.stateChange.bind(this.ider)
     this.redirector.onStateChanged = this.onConnectionStateChange.bind(this)
     this.redirector.onProcessData = this.ider.processData.bind(this.ider)
