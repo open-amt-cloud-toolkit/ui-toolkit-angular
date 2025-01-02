@@ -28,9 +28,9 @@ describe('IderComponent', () => {
   })
 
   it('should correctly instantiate redirector and ider', () => {
-    component.mpsServer = 'testServer'
-    component.authToken = 'testToken'
-    component.deviceId = 'testDeviceId'
+    fixture.componentRef.setInput('mpsServer', 'testServer')
+    fixture.componentRef.setInput('authToken', 'testToken')
+    fixture.componentRef.setInput('deviceId', 'testDeviceId')
 
     component.instantiate()
 
@@ -40,9 +40,9 @@ describe('IderComponent', () => {
     expect(component.ider).toBeInstanceOf(AMTIDER)
     expect(component.redirector).toBeInstanceOf(AMTRedirector)
 
+    expect(component.redirector?.host).toEqual('testDeviceId')
     expect(component.redirector?.server).toEqual('testServer')
     expect(component.redirector?.authToken).toEqual('testToken')
-    expect(component.redirector?.host).toEqual('testDeviceId')
   })
 
   it('should emit device status', () => {
@@ -53,13 +53,13 @@ describe('IderComponent', () => {
 
   it('should call instantiate when deviceConnection emits true', () => {
     spyOn(component, 'instantiate')
-    component.deviceConnection.emit(true)
+    component.deviceConnection().emit(true)
     expect(component.instantiate).toHaveBeenCalled()
   })
 
   it('should call stopIder when deviceConnection emits false', () => {
     spyOn(component, 'stopIder')
-    component.deviceConnection.emit(false)
+    component.deviceConnection().emit(false)
     expect(component.stopIder).toHaveBeenCalled()
   })
 
