@@ -20,7 +20,7 @@
 
 ### BREAKING CHANGES
 
-- Converting to Standalone Components for KVM, IDER, and SOL.
+- Converting to Standalone Components for KVM, IDER, and SOL
   As such, standalone requires Angular 17 or newer. - Renamed KvmComponent to KVMComponent - Renamed SolComponent to SOLComponent - Renamed IderComponent to IDER Component - Fixed backwards compatible support to Angular 17
 
 ## [7.2.7](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v7.2.6...v7.2.7) (2024-04-24)
