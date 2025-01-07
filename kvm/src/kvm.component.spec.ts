@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  **********************************************************************/
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
+import { input } from '@angular/core'
 
 import { KVMComponent } from './kvm.component'
 import {
@@ -26,14 +27,19 @@ describe('KvmComponent', () => {
   const setup = (): void => {
     fixture = TestBed.createComponent(KVMComponent)
     component = fixture.componentInstance
+    // Set initial inputs via setInput
+    fixture.componentRef.setInput('mpsServer', '')
+    fixture.componentRef.setInput('authToken', '')
+    fixture.componentRef.setInput('deviceId', '')
     fixture.detectChanges()
   }
 
   const asyncSetup = fakeAsync(() => {
     fixture = TestBed.createComponent(KVMComponent)
     component = fixture.componentInstance
-    component.mpsServer = 'wss://localhost'
-    component.authToken = 'authToken'
+    fixture.componentRef.setInput('mpsServer', 'wss://localhost')
+    fixture.componentRef.setInput('authToken', 'authToken')
+    fixture.componentRef.setInput('deviceId', '')
     tick(4500)
     fixture.detectChanges()
     flush()
@@ -49,9 +55,9 @@ describe('KvmComponent', () => {
     expect(component.dataProcessor).toBeInstanceOf(DataProcessor)
     expect(component.selected).toEqual(1)
     expect(component.encodings.length).toEqual(2)
-    expect(component.mpsServer).toEqual('')
-    expect(component.deviceId).toEqual('')
-    expect(component.authToken).toEqual('')
+    expect(component.mpsServer()).toBe('')
+    expect(component.deviceId()).toBe('')
+    expect(component.authToken()).toBe('')
   })
 
   it('should autoconnect on pageload', () => {
@@ -59,8 +65,8 @@ describe('KvmComponent', () => {
     spyOn<any>(component.redirector, 'start')
     spyOn(component.keyboardHelper, 'GrabKeyInput')
     expect(component.redirector).not.toBeNull()
-    expect(component.mpsServer).toEqual('wss://localhost')
-    expect(component.authToken).toEqual('authToken')
+    expect(component.mpsServer()).toEqual('wss://localhost')
+    expect(component.authToken()).toEqual('authToken')
   })
 
   it('should reset all the objects once kvm is stopped', () => {
@@ -78,7 +84,7 @@ describe('KvmComponent', () => {
     setup()
     const stopKvmSpy = spyOn(component, 'stopKvm')
     const autoConnectSpy = spyOn(component, 'autoConnect')
-    component.selectedEncoding.emit(1)
+    component.selectedEncoding().emit(1)
     tick(1100)
     fixture.detectChanges()
     expect(component.selected).toEqual(1)

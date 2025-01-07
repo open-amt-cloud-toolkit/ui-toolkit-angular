@@ -25,14 +25,18 @@ describe('SolComponent', () => {
   const setup = (): void => {
     fixture = TestBed.createComponent(SOLComponent)
     component = fixture.componentInstance
+    fixture.componentRef.setInput('mpsServer', '')
+    fixture.componentRef.setInput('authToken', '')
+    fixture.componentRef.setInput('deviceId', '')
     fixture.detectChanges()
   }
 
   const asyncSetup = fakeAsync(() => {
     fixture = TestBed.createComponent(SOLComponent)
     component = fixture.componentInstance
-    component.mpsServer = 'wss://localhost'
-    component.authToken = 'authToken'
+    fixture.componentRef.setInput('mpsServer', 'wss://localhost')
+    fixture.componentRef.setInput('authToken', 'authToken')
+    fixture.componentRef.setInput('deviceId', '')
     tick(4500)
     fixture.detectChanges()
     flush()
@@ -104,7 +108,7 @@ describe('SolComponent', () => {
     asyncSetup()
     spyOn(component.redirector, 'start')
     expect(component.redirector).not.toBeNull()
-    expect(component.mpsServer).toEqual('wss://localhost')
-    expect(component.authToken).toEqual('authToken')
+    expect(component.mpsServer()).toEqual('wss://localhost')
+    expect(component.authToken()).toEqual('authToken')
   })
 })

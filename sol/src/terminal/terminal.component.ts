@@ -2,35 +2,39 @@
  * Copyright (c) Intel Corporation 2023
  * SPDX-License-Identifier: Apache-2.0
  **********************************************************************/
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit, input, output } from '@angular/core'
 import { Terminal } from '@xterm/xterm'
 @Component({
   selector: 'amt-terminal',
-  templateUrl: './terminal.component.html',
-  standalone: true
+  templateUrl: './terminal.component.html'
 })
 export class TerminalComponent implements OnInit {
-  @Input() term: Terminal
-  @Output() handleKeyPress: EventEmitter<any> = new EventEmitter<any>()
+  // TODO: Notes from signal input migration:
+  //  Input is initialized to `undefined` but type does not allow this value.
+  //  This worked with `@Input` because your project uses `--strictPropertyInitialization=false`.
+  readonly term = input<Terminal>(undefined!)
+  readonly handleKeyPress = output<any>()
   container!: HTMLElement | null
   ngOnInit(): void {
-    if (this.term == null) throw new Error('Terminal not found')
+    const term = this.term()
+    if (term == null) throw new Error('Terminal not found')
     this.container = document.getElementById('terminal')
     if (this.container == null) throw new Error('Container not found')
-    this.term.open(this.container)
-    this.term.onKey(({ key, domEvent }) => {
+    term.open(this.container)
+    term.onKey(({ key, domEvent }) => {
       domEvent.preventDefault()
       if (domEvent.ctrlKey && domEvent.key === 'c') {
-        if (this.term.hasSelection()) {
+        const termValue = this.term()
+        if (termValue.hasSelection()) {
           navigator.clipboard
-            .writeText(this.term.getSelection())
+            .writeText(termValue.getSelection())
             .then(() => {})
             .catch((err) => {
               console.error('Failed to copy to clipboard', err)
             })
         } else {
           // Send interrupt signal (SIGINT) to terminal
-          this.term.write('\x03') // Sends Ctrl + C (ASCII code 03)
+          termValue.write('\x03') // Sends Ctrl + C (ASCII code 03)
         }
         // Prevent the default browser behavior (like opening menus)
         return false
