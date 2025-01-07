@@ -1,3 +1,15 @@
+## [8.0.6](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.5...v8.0.6) (2025-01-07)
+
+
+### chore
+
+* update build tasks, package.json and changelog ([#1668](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/issues/1668)) ([17294a2](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/17294a28b6e5eff874dfef7cc9c7edf67fc3195a))
+
+
+### BREAKING CHANGES
+
+*   - build(deps): bump angular 18 to 19
+
 ## [8.0.5](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.4...v8.0.5) (2024-11-08)
 
 ## [8.0.4](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.3...v8.0.4) (2024-09-25)
