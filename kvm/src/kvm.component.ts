@@ -11,7 +11,12 @@ import {
   viewChild,
   input,
   output,
-  EventEmitter
+  EventEmitter,
+  inject,
+  Renderer2,
+  computed,
+  model,
+  effect
 } from '@angular/core'
 import {
   AMTDesktop,
@@ -32,9 +37,11 @@ import { throttleTime } from 'rxjs/operators'
   styleUrls: ['./kvm.component.css']
 })
 export class KVMComponent implements OnInit, AfterViewInit, OnDestroy {
+  renderer = inject(Renderer2)
   readonly canvas = viewChild<ElementRef>('canvas')
   readonly device = viewChild.required<string>('device')
   public context!: CanvasRenderingContext2D
+  public isFullscreen = input(false)
 
   //setting a width and height for the canvas
 
@@ -45,8 +52,9 @@ export class KVMComponent implements OnInit, AfterViewInit, OnDestroy {
   public deviceId = input('')
 
   readonly deviceStatus = output<number>()
-  readonly deviceConnection = input<EventEmitter<boolean>>(new EventEmitter<boolean>())
-  readonly selectedEncoding = input<EventEmitter<number>>(new EventEmitter<number>())
+  readonly deviceConnection = input(new EventEmitter<boolean>())
+  readonly selectedEncoding = input(new EventEmitter<number>())
+
   module: AMTDesktop | null
   redirector: AMTKvmDataRedirector | null
   dataProcessor!: IDataProcessor | null
@@ -61,6 +69,11 @@ export class KVMComponent implements OnInit, AfterViewInit, OnDestroy {
     { value: 2, viewValue: 'RLE 16' }
   ]
 
+  constructor() {
+    effect(() => {
+      this.toggleFullscreen()
+    })
+  }
   ngOnInit(): void {
     this.deviceConnection().subscribe((data: boolean) => {
       if (data) {
@@ -77,6 +90,26 @@ export class KVMComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.init()
+  }
+
+  toggleFullscreen(): void {
+    const canvasElement = this.canvas()?.nativeElement
+    if (!canvasElement) return
+
+    if (this.isFullscreen()) {
+      if (canvasElement.requestFullscreen) {
+        canvasElement.requestFullscreen()
+      }
+      this.renderer.addClass(canvasElement, 'fullscreen')
+    } else {
+      if (document.exitFullscreen && document.fullscreenElement != null) {
+        document.exitFullscreen()
+      }
+      this.renderer.removeClass(canvasElement, 'fullscreen')
+    }
+    if (this.mouseHelper != null) {
+      this.mouseHelper.resetOffsets()
+    }
   }
 
   instantiate(): void {
