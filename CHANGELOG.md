@@ -1,3 +1,9 @@
+# [9.1.0](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v9.0.0...v9.1.0) (2025-01-14)
+
+### Features
+
+- allow KVM fullscreen ([607a9c1](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/commit/607a9c18a937a465966f9c5b915b63d697332844))
+
 # [9.0.0](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v8.0.5...v9.0.0) (2025-01-07)
 
 ### chore
