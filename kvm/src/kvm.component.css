@@ -2,3 +2,7 @@
   max-height: 80%;
   max-width: 100%;
 }
+
+canvas.fullscreen {
+  height: 100vh !important;
+}
