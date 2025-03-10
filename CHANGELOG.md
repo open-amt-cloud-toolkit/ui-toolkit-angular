@@ -1,3 +1,5 @@
+## [9.1.2](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v9.1.1...v9.1.2) (2025-03-10)
+
 ## [9.1.1](https://github.com/device-management-toolkit/ui-toolkit-angular/compare/v9.1.0...v9.1.1) (2025-02-21)
 
 # [9.1.0](https://github.com/open-amt-cloud-toolkit/ui-toolkit-angular/compare/v9.0.0...v9.1.0) (2025-01-14)
